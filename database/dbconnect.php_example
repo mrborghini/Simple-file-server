@@ -1,0 +1,19 @@
+<?php
+
+session_start();
+
+$host = "YourDomainName"; //put here your domain name. For example: "localhost".
+$username = "YourUserName"; //Put your SQL username
+$password = "YourSQLPassword"; //Put your sql password here
+$dbname = "simple_file_server"; //Don't change this unless you're modifying the database name
+$dsn = "mysql:host=$host;dbname=$dbname"; //Don't change this
+
+try{
+    $pdo = new PDO($dsn, $username, $password);
+}
+    
+catch(PDOException $e){
+        echo $e->getMessage();
+    }
+
+?>

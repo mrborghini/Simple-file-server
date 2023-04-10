@@ -1,6 +1,29 @@
-body{
+body {
     margin: 0;
     padding: 0;
     background-color: #272727;
     color: whitesmoke;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+label {
+    display: inline-block;
+    padding: 15px 40px;
+    background-color: #a54a3a;
+    user-select: none;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-self: center;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
 }

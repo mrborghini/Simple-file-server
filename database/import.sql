@@ -11,6 +11,7 @@ CREATE TABLE users (
 CREATE TABLE uploads (
     fileid int NOT NULL AUTO_INCREMENT PRIMARY KEY,
     filelocation varchar(255) NOT NULL,
+    filename varchar(255) NOT NULL,
     userid int NOT NULL,
     FOREIGN KEY (userid) REFERENCES users(userid)
 );

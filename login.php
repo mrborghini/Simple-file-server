@@ -1,6 +1,8 @@
 <?php
 
 require_once('database/dbconnect.php');
+require_once('components/functions.php');
+
 checkNotLogin();
 
 ?>
@@ -27,26 +29,26 @@ checkNotLogin();
         <button type="submit">Confirm login</button>
         <?php
 
-if (isset($_POST['email']) && $_POST['password']) {
-    $query = "SELECT * FROM users WHERE email = :email";
-    $stmt = $pdo->prepare($query);
-        $stmt->execute([
-            'email' => $_POST['email']
-        ]);
-        
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        
-        if ($result && password_verify($_POST['password'], $result['password'])) {
-            $_SESSION['userid'] = $result['userid'];
-            $_SESSION['email'] = $result['email'];
-            header('location: ./');
-            exit();
-        } else {
-            echo "Incorrect login";
+        if (isset($_POST['email']) && $_POST['password']) {
+            $query = "SELECT * FROM users WHERE email = :email";
+            $stmt = $pdo->prepare($query);
+            $stmt->execute([
+                'email' => $_POST['email']
+            ]);
+
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($result && password_verify($_POST['password'], $result['password'])) {
+                $_SESSION['userid'] = $result['userid'];
+                $_SESSION['email'] = $result['email'];
+                header('location: ./');
+                exit();
+            } else {
+                echo "Incorrect login";
+            }
         }
-    }
-    
-    ?>
+
+        ?>
     </form>
 </body>
 

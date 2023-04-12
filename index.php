@@ -21,7 +21,7 @@ checkLogin();
 <body>
     <nav>
         <form method="post" enctype="multipart/form-data">
-            <input type="file" id="uploadfile" class="uploadfile" name="fileupload" multiple>
+            <input type="file" id="uploadfile" class="uploadfile" name="fileupload[]" multiple>
             <label for="uploadfile">
                 Upload files
             </label>
@@ -29,19 +29,36 @@ checkLogin();
         </form>
 
         <?php
-        if (isset($_FILES["fileupload"]) && basename($_FILES["fileupload"]["name"]) !== '') {
+        if (isset($_FILES["fileupload"]) && basename($_FILES["fileupload"]["name"][0]) !== '') {
             $targetdir = "uploads/";
             $fullpath = "/";
-            $target_file = basename($_FILES["fileupload"]["name"]);
-            $target_filelocation = $targetdir . RandomCharacters(128) . $target_file;
-            move_uploaded_file($_FILES['fileupload']['tmp_name'], $target_filelocation);
             $uploadquery = "INSERT INTO uploads (filename, filelocation, userid) VALUES (:filename, :filelocation, :userid)";
             $uploadstmt = $pdo->prepare($uploadquery);
-            $uploadstmt->execute([
-                'filename' => $target_file,
-                'filelocation' => $fullpath . $target_filelocation,
-                'userid' => $_SESSION['userid']
-            ]);
+
+            if (is_array($_FILES["fileupload"]["name"])) {
+
+                $countfiles = count($_FILES["fileupload"]["name"]);
+
+                for ($i = 0; $i < $countfiles; $i++) {
+                    $target_file = basename($_FILES["fileupload"]["name"][$i]);
+                    $target_filelocation = $targetdir . RandomCharacters(128) . $target_file;
+                    move_uploaded_file($_FILES['fileupload']['tmp_name'][$i], $target_filelocation);
+                    $uploadstmt->execute([
+                        'filename' => $target_file,
+                        'filelocation' => $fullpath . $target_filelocation,
+                        'userid' => $_SESSION['userid']
+                    ]);
+                }
+            } else {
+                $target_file = basename($_FILES["fileupload"]["name"]);
+                $target_filelocation = $targetdir . RandomCharacters(128) . $target_file;
+                move_uploaded_file($_FILES['fileupload']['tmp_name'], $target_filelocation);
+                $uploadstmt->execute([
+                    'filename' => $target_file,
+                    'filelocation' => $fullpath . $target_filelocation,
+                    'userid' => $_SESSION['userid']
+                ]);
+            }
             header("location: ./");
             exit();
         }
@@ -61,23 +78,27 @@ checkLogin();
 
 
         for ($i = 0; $i < count($filesindatabase); $i++) {
-            $extension = explode('.', $filesindatabase[$i]['filename']);
+            $filename = $filesindatabase[$i]['filename'];
+            $filesrc = $filesindatabase[$i]['filelocation'];
+
+            $extension = explode('.', $filename);
             switch ($extension[1]) {
                 case 'gif':
-                    ShowImg($filesindatabase[$i]['filelocation'], $filesindatabase[$i]['filename']);
+                    ShowImg($filesrc, $filename);
                     break;
                 case 'png':
-                    ShowImg($filesindatabase[$i]['filelocation'], $filesindatabase[$i]['filename']);
+                    ShowImg($filesrc, $filename);
                     break;
                 case 'jpg':
-                    ShowImg($filesindatabase[$i]['filelocation'], $filesindatabase[$i]['filename']);
+                    ShowImg($filesrc, $filename);
                     break;
                 case 'jpeg':
-                    ShowImg($filesindatabase[$i]['filelocation'], $filesindatabase[$i]['filename']);
+                    ShowImg($filesrc, $filename);
                     break;
                 case 'svg':
-                    ShowImg($filesindatabase[$i]['filelocation'], $filesindatabase[$i]['filename']);
+                    ShowImg($filesrc, $filename);
                     break;
+                case '':
                 default:
                     break;
             }

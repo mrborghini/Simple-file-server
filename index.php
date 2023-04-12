@@ -29,7 +29,7 @@ checkLogin();
         </form>
 
         <?php
-        if (isset($_FILES['fileupload'])) {
+        if (isset($_FILES["fileupload"]) && basename($_FILES["fileupload"]["name"]) !== '') {
             $targetdir = "uploads/";
             $fullpath = "/";
             $target_file = basename($_FILES["fileupload"]["name"]);
@@ -59,7 +59,7 @@ checkLogin();
         ]);
         $filesindatabase = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        
+
         for ($i = 0; $i < count($filesindatabase); $i++) {
             $extension = explode('.', $filesindatabase[$i]['filename']);
             switch ($extension[1]) {

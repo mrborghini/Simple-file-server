@@ -25,14 +25,15 @@ checkLogin();
             <label for="uploadfile">
                 Upload files
             </label>
-            <button type="submit">Confirm Upload</button>
+            <input type="text" name="search" id="search" placeholder="Search">
+            <button type="submit">Confirm search or upload</button>
         </form>
 
         <?php
         if (isset($_FILES["fileupload"]) && basename($_FILES["fileupload"]["name"][0]) !== '') {
             $targetdir = "uploads/";
             $fullpath = "/";
-            $uploadquery = "INSERT INTO uploads (filename, filelocation, userid) VALUES (:filename, :filelocation, :userid)";
+            $uploadquery = "INSERT INTO uploads (filename, filelocation, userid, trash) VALUES (:filename, :filelocation, :userid, :trash)";
             $uploadstmt = $pdo->prepare($uploadquery);
 
             if (is_array($_FILES["fileupload"]["name"])) {
@@ -46,7 +47,8 @@ checkLogin();
                     $uploadstmt->execute([
                         'filename' => $target_file,
                         'filelocation' => $fullpath . $target_filelocation,
-                        'userid' => $_SESSION['userid']
+                        'userid' => $_SESSION['userid'],
+                        'trash' => 0
                     ]);
                 }
             } else {
@@ -56,7 +58,8 @@ checkLogin();
                 $uploadstmt->execute([
                     'filename' => $target_file,
                     'filelocation' => $fullpath . $target_filelocation,
-                    'userid' => $_SESSION['userid']
+                    'userid' => $_SESSION['userid'],
+                    'trash' => 0
                 ]);
             }
             header("location: ./");

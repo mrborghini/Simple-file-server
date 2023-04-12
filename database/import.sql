@@ -13,5 +13,6 @@ CREATE TABLE uploads (
     filelocation varchar(255) NOT NULL,
     filename varchar(255) NOT NULL,
     userid int NOT NULL,
+    trash boolean NOT NULL,
     FOREIGN KEY (userid) REFERENCES users(userid)
 );

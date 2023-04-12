@@ -4,7 +4,7 @@ This is a simple cloud site that you can setup as a NAS and access remotely.
 
 # How do I set it up?
 
-1. First install any version of MySQL and Apache and PHP 8.x.x
+1. First install any version of MySQL and Apache and PHP 8.x.x. Although things on PHP 7.x.x might work, maybe in the future I'll use more modern functions and features.
 
 2. Then import the ```database/import.sql``` file into MySQL.
 

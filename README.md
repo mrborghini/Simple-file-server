@@ -16,7 +16,7 @@ This is a simple cloud site that you can setup as a NAS and access remotely.
 
 6. Hash your password using passwordhasher.php. (Just run it in the command line).
 
-7. Add users by using the following query in MySQL: ```INSERT INTO users (email, password) VALUES (email@example.com, HashedPassword);```.
+7. Add users by using the following query in MySQL: ```INSERT INTO users (email, password) VALUES ('email@example.com', 'HashedPassword');```.
 The HashedPassword should look something like this: ```$2y$10$8OEVG0m8mRDKf.l0oXe7EuwARryriOReeqXKNQQIOaHLdKmTC0012```.
 
 Congratulations now you have your own cloud!

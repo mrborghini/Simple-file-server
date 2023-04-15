@@ -27,6 +27,18 @@ if (isset($_POST['deletefile'])) {
     exit();
 }
 
+if(isset($_POST['restore'])){
+    $trashitemquery = "UPDATE uploads SET trash = :trash WHERE userid = :userid AND fileid = :fileid";
+    $stmttrash = $pdo->prepare($trashitemquery);
+    $stmttrash->execute([
+        'trash' => 0,
+        'userid' => $_SESSION['userid'],
+        'fileid' => $_POST['restore']
+    ]);
+    header('location: trash.php');
+    exit();
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -42,43 +54,14 @@ if (isset($_POST['deletefile'])) {
 
 <body>
     <nav>
-        <a href="logout.php">Logout</a>
+        <a class="navigation" href="logout.php">Logout</a>
+        <a class="navigation" href="/">Home</a>
     </nav>
     <form method="post">
         <div class="files">
             <?php
 
-            $query = "SELECT * FROM uploads WHERE userid = :userid AND trash = :trash";
-            $stmt = $pdo->prepare($query);
-            $stmt->execute([
-                'userid' => $_SESSION['userid'],
-                'trash' => 1
-            ]);
-            $filesindatabase = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-
-            for ($i = 0; $i < count($filesindatabase); $i++) {
-                $filename = $filesindatabase[$i]['filename'];
-                $filesrc = $filesindatabase[$i]['filelocation'];
-                $fileid = $filesindatabase[$i]['fileid'];
-                $trash =  $filesindatabase[$i]['trash'];
-
-                $fileseperation = explode('.', $filename);
-                $extension = end($fileseperation);
-                switch ($extension) {
-                    case in_array($extension, ImageExtensions):
-                        ShowImg($filesrc, $filename, $fileid, $trash);
-                        break;
-                    case in_array($extension, VideoExtensions):
-                        ShowVideo($filesrc, $filename, $fileid, $trash);
-                        break;
-                    case in_array($extension, Windows):
-                        WinExecutables($filesrc, $filename, $fileid, $trash);
-                        break;
-                    default:
-                        break;
-                }
-            }
+            SortData(GetData($pdo, 1));
 
             echo (StorageLeft());
 

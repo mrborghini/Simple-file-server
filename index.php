@@ -42,80 +42,20 @@ if (isset($_POST['deletefile'])) {
         </form>
 
         <?php
+
         if (isset($_FILES["fileupload"]) && basename($_FILES["fileupload"]["name"][0]) !== '') {
-            $targetdir = "uploads/";
-            $fullpath = "/";
-            $uploadquery = "INSERT INTO uploads (filename, filelocation, userid, trash) VALUES (:filename, :filelocation, :userid, :trash)";
-            $uploadstmt = $pdo->prepare($uploadquery);
-
-            if (is_array($_FILES["fileupload"]["name"])) {
-
-                $countfiles = count($_FILES["fileupload"]["name"]);
-
-                for ($i = 0; $i < $countfiles; $i++) {
-                    $target_file = basename($_FILES["fileupload"]["name"][$i]);
-                    $target_filelocation = $targetdir . RandomCharacters(128) . $target_file;
-                    move_uploaded_file($_FILES['fileupload']['tmp_name'][$i], $target_filelocation);
-                    $uploadstmt->execute([
-                        'filename' => $target_file,
-                        'filelocation' => $fullpath . $target_filelocation,
-                        'userid' => $_SESSION['userid'],
-                        'trash' => 0
-                    ]);
-                }
-            } else {
-                $target_file = basename($_FILES["fileupload"]["name"]);
-                $target_filelocation = $targetdir . RandomCharacters(128) . $target_file;
-                move_uploaded_file($_FILES['fileupload']['tmp_name'], $target_filelocation);
-                $uploadstmt->execute([
-                    'filename' => $target_file,
-                    'filelocation' => $fullpath . $target_filelocation,
-                    'userid' => $_SESSION['userid'],
-                    'trash' => 0
-                ]);
-            }
-            header("location: ./");
-            exit();
+            Uploadfiles($pdo);
         }
         ?>
 
-        <a href="logout.php">Logout</a>
+        <a class="navigation" href="logout.php">Logout</a>
+        <a class="navigation" href="trash.php">Trash</a>
     </nav>
     <form method="post">
         <div class="files">
             <?php
 
-            $query = "SELECT * FROM uploads WHERE userid = :userid AND trash = :trash";
-            $stmt = $pdo->prepare($query);
-            $stmt->execute([
-                'userid' => $_SESSION['userid'],
-                'trash' => 0
-            ]);
-            $filesindatabase = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-
-            for ($i = 0; $i < count($filesindatabase); $i++) {
-                $filename = $filesindatabase[$i]['filename'];
-                $filesrc = $filesindatabase[$i]['filelocation'];
-                $fileid = $filesindatabase[$i]['fileid'];
-                $trash = $filesindatabase[$i]['trash'];
-
-                $fileseperation = explode('.', $filename);
-                $extension = end($fileseperation);
-                switch ($extension) {
-                    case in_array($extension, ImageExtensions):
-                        ShowImg($filesrc, $filename, $fileid, $trash);
-                        break;
-                    case in_array($extension, VideoExtensions):
-                        ShowVideo($filesrc, $filename, $fileid, $trash);
-                        break;
-                    case in_array($extension, Windows):
-                        WinExecutables($filesrc, $filename, $fileid, $trash);
-                        break;
-                    default:
-                        break;
-                }
-            }
+            SortData(GetData($pdo, 0));
 
             echo (StorageLeft());
 

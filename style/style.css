@@ -56,3 +56,7 @@ html {
     user-select: none;
     filter: invert(1);
 }
+
+.navigation {
+    color: whitesmoke;
+}

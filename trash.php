@@ -6,14 +6,24 @@ require_once('components/functions.php');
 checkLogin();
 
 if (isset($_POST['deletefile'])) {
-    $trashitemquery = "UPDATE uploads SET trash = :trash WHERE userid = :userid AND fileid = :fileid";
+    $querygetfile = "SELECT * FROM uploads WHERE trash = :trash AND userid = :userid AND fileid = :fileid";
+    $stmtgetfile = $pdo->prepare($querygetfile);
+    $stmtgetfile->execute([
+        'trash' => 1,
+        'userid' => $_SESSION['userid'],
+        'fileid' => $_POST['deletefile']
+    ]);
+    $filesindatabasegetfile = $stmtgetfile->fetch(PDO::FETCH_ASSOC);
+
+    $trashitemquery = "DELETE FROM uploads WHERE trash = :trash AND userid = :userid AND fileid = :fileid";
     $stmttrash = $pdo->prepare($trashitemquery);
     $stmttrash->execute([
         'trash' => 1,
         'userid' => $_SESSION['userid'],
         'fileid' => $_POST['deletefile']
     ]);
-    header('location: ./');
+    unlink('.' . $filesindatabasegetfile['filesrc']);
+    header('location: trash.php');
     exit();
 }
 
@@ -41,44 +51,6 @@ if (isset($_POST['deletefile'])) {
             <button type="submit">Confirm search or upload</button>
         </form>
 
-        <?php
-        if (isset($_FILES["fileupload"]) && basename($_FILES["fileupload"]["name"][0]) !== '') {
-            $targetdir = "uploads/";
-            $fullpath = "/";
-            $uploadquery = "INSERT INTO uploads (filename, filelocation, userid, trash) VALUES (:filename, :filelocation, :userid, :trash)";
-            $uploadstmt = $pdo->prepare($uploadquery);
-
-            if (is_array($_FILES["fileupload"]["name"])) {
-
-                $countfiles = count($_FILES["fileupload"]["name"]);
-
-                for ($i = 0; $i < $countfiles; $i++) {
-                    $target_file = basename($_FILES["fileupload"]["name"][$i]);
-                    $target_filelocation = $targetdir . RandomCharacters(128) . $target_file;
-                    move_uploaded_file($_FILES['fileupload']['tmp_name'][$i], $target_filelocation);
-                    $uploadstmt->execute([
-                        'filename' => $target_file,
-                        'filelocation' => $fullpath . $target_filelocation,
-                        'userid' => $_SESSION['userid'],
-                        'trash' => 0
-                    ]);
-                }
-            } else {
-                $target_file = basename($_FILES["fileupload"]["name"]);
-                $target_filelocation = $targetdir . RandomCharacters(128) . $target_file;
-                move_uploaded_file($_FILES['fileupload']['tmp_name'], $target_filelocation);
-                $uploadstmt->execute([
-                    'filename' => $target_file,
-                    'filelocation' => $fullpath . $target_filelocation,
-                    'userid' => $_SESSION['userid'],
-                    'trash' => 0
-                ]);
-            }
-            header("location: ./");
-            exit();
-        }
-        ?>
-
         <a href="logout.php">Logout</a>
     </nav>
     <form method="post">
@@ -89,7 +61,7 @@ if (isset($_POST['deletefile'])) {
             $stmt = $pdo->prepare($query);
             $stmt->execute([
                 'userid' => $_SESSION['userid'],
-                'trash' => 0
+                'trash' => 1
             ]);
             $filesindatabase = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -98,7 +70,7 @@ if (isset($_POST['deletefile'])) {
                 $filename = $filesindatabase[$i]['filename'];
                 $filesrc = $filesindatabase[$i]['filelocation'];
                 $fileid = $filesindatabase[$i]['fileid'];
-                $trash = $filesindatabase[$i]['trash'];
+                $trash =  $filesindatabase[$i]['trash'];
 
                 $fileseperation = explode('.', $filename);
                 $extension = end($fileseperation);

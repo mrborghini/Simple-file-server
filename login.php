@@ -19,14 +19,15 @@ checkNotLogin();
 </head>
 
 <body>
-    <form method="post" class="center column">
+    <h1 class="pagetitle">Simple file server</h1>
+    <form method="post" class="loginlayout">
         <label for="email">email</label>
-        <input type="email" name="email" id="email">
+        <input class="credentials" type="email" name="email" id="email">
         <p></p>
         <label for="password">Password</label>
-        <input type="password" name="password" id="password">
+        <input class="credentials" type="password" name="password" id="password">
         <p></p>
-        <button type="submit">Confirm login</button>
+        <button class="credentials" type="submit">Confirm login</button>
         <?php
 
         if (isset($_POST['email']) && $_POST['password']) {

@@ -1,33 +1,58 @@
-body {
+body,
+html {
     margin: 0;
     padding: 0;
     background-color: #272727;
     color: whitesmoke;
+    height: 100%;
+    width: 100%;
+    font-size: 1em;
 }
 
-input[type="file"] {
-    display: none;
+.loginlayout {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-label {
-    display: inline-block;
-    padding: 15px 40px;
-    background-color: #a54a3a;
-    user-select: none;
+.credentials {
+    max-width: 400px;
+    width: 40%;
+    padding: 20px;
 }
 
-.center {
+.pagetitle {
+    text-align: center;
+}
+
+.files {
     display: flex;
     justify-content: center;
     align-items: center;
-    justify-self: center;
+    flex-wrap: wrap;
+    user-select: none;
 }
 
-.column {
+.filecard {
     display: flex;
     flex-direction: column;
+    max-width: 500px;
+    margin: 2%;
 }
 
-a{
-    color: whitesmoke;
+.fileimg {
+    width: 100%;
+    user-select: none;
+}
+
+.filename {
+    text-align: center;
+    font-size: 30px;
+}
+
+.blackicons {
+    width: 100%;
+    user-select: none;
+    filter: invert(1);
 }

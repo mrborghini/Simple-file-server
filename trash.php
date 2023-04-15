@@ -22,7 +22,7 @@ if (isset($_POST['deletefile'])) {
         'userid' => $_SESSION['userid'],
         'fileid' => $_POST['deletefile']
     ]);
-    unlink('.' . $filesindatabasegetfile['filesrc']);
+    unlink('.' . $filesindatabasegetfile['filelocation']);
     header('location: trash.php');
     exit();
 }
@@ -42,15 +42,6 @@ if (isset($_POST['deletefile'])) {
 
 <body>
     <nav>
-        <form method="post" enctype="multipart/form-data">
-            <input type="file" id="uploadfile" class="uploadfile" name="fileupload[]" multiple>
-            <label for="uploadfile">
-                Upload files
-            </label>
-            <input type="text" name="search" id="search" placeholder="Search">
-            <button type="submit">Confirm search or upload</button>
-        </form>
-
         <a href="logout.php">Logout</a>
     </nav>
     <form method="post">

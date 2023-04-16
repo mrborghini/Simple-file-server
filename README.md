@@ -25,3 +25,5 @@ Congratulations now you have your own cloud!
 # Troubleshooting
 
 On some Linux distrobutions you might need to setup so it can read .htaccess.
+
+If uploading a file doesn't work you might have to update the permissions of the folder like so: ```sudo chown -R 750 uploads/ && sudo chown -R apache uploads/```

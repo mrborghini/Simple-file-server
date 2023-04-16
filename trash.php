@@ -56,14 +56,13 @@ if(isset($_POST['restore'])){
     <nav>
         <a class="navigation" href="logout.php">Logout</a>
         <a class="navigation" href="/">Home</a>
+        <?php echo (StorageLeft()); ?>
     </nav>
     <form method="post">
         <div class="files">
             <?php
 
             SortData(GetData($pdo, 1));
-
-            echo (StorageLeft());
 
             ?>
         </div>

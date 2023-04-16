@@ -46,6 +46,8 @@ if (isset($_POST['deletefile'])) {
         if (isset($_FILES["fileupload"]) && basename($_FILES["fileupload"]["name"][0]) !== '') {
             Uploadfiles($pdo);
         }
+
+        echo (StorageLeft());
         ?>
 
         <a class="navigation" href="logout.php">Logout</a>
@@ -56,8 +58,6 @@ if (isset($_POST['deletefile'])) {
             <?php
 
             SortData(GetData($pdo, 0));
-
-            echo (StorageLeft());
 
             ?>
         </div>

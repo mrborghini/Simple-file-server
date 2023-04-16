@@ -20,3 +20,8 @@ This is a simple cloud site that you can setup as a NAS and access remotely.
 The HashedPassword should look something like this: ```$2y$10$8OEVG0m8mRDKf.l0oXe7EuwARryriOReeqXKNQQIOaHLdKmTC0012```.
 
 Congratulations now you have your own cloud!
+
+
+# Troubleshooting
+
+On some Linux distrobutions you might need to setup so it can read .htaccess.

@@ -178,4 +178,59 @@ function Uploadfiles($pdo){
     header("location: ./");
     exit();
 }
+function deletefiles($pdo){
+    if ($_POST['deletefile'] !== "deleteall") {
+        $querygetfile = "SELECT * FROM uploads WHERE trash = :trash AND userid = :userid AND fileid = :fileid";
+        $stmtgetfile = $pdo->prepare($querygetfile);
+        $stmtgetfile->execute([
+            'trash' => 1,
+            'userid' => $_SESSION['userid'],
+            'fileid' => $_POST['deletefile']
+        ]);
+        $filesindatabasegetfile = $stmtgetfile->fetch(PDO::FETCH_ASSOC);
+
+        $trashitemquery = "DELETE FROM uploads WHERE trash = :trash AND userid = :userid AND fileid = :fileid";
+        $stmttrash = $pdo->prepare($trashitemquery);
+        $stmttrash->execute([
+            'trash' => 1,
+            'userid' => $_SESSION['userid'],
+            'fileid' => $_POST['deletefile']
+        ]);
+        unlink('.' . $filesindatabasegetfile['filelocation']);
+    } else {
+        $querygetfile = "SELECT * FROM uploads WHERE trash = :trash AND userid = :userid";
+        $stmtgetfile = $pdo->prepare($querygetfile);
+        $stmtgetfile->execute([
+            'trash' => 1,
+            'userid' => $_SESSION['userid'],
+        ]);
+        $filesindatabasegetfile = $stmtgetfile->fetchAll(PDO::FETCH_ASSOC);
+
+        $trashitemquery = "DELETE FROM uploads WHERE trash = :trash AND userid = :userid";
+        $stmttrash = $pdo->prepare($trashitemquery);
+        $stmttrash->execute([
+            'trash' => 1,
+            'userid' => $_SESSION['userid'],
+        ]);
+        echo count($filesindatabasegetfile);
+        for ($i = 0; $i < count($filesindatabasegetfile); $i++) {
+            unlink('.' . $filesindatabasegetfile[$i]['filelocation']);
+        }
+    }
+    header('location: trash.php');
+    exit();
+}
+
+function trashfile($pdo){
+    $trashitemquery = "UPDATE uploads SET trash = :trash WHERE userid = :userid AND fileid = :fileid";
+    $stmttrash = $pdo->prepare($trashitemquery);
+    $stmttrash->execute([
+        'trash' => 1,
+        'userid' => $_SESSION['userid'],
+        'fileid' => $_POST['deletefile']
+    ]);
+    header('location: ./');
+    exit();
+}
+
 ?>

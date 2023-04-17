@@ -6,15 +6,7 @@ require_once('components/functions.php');
 checkLogin();
 
 if (isset($_POST['deletefile'])) {
-    $trashitemquery = "UPDATE uploads SET trash = :trash WHERE userid = :userid AND fileid = :fileid";
-    $stmttrash = $pdo->prepare($trashitemquery);
-    $stmttrash->execute([
-        'trash' => 1,
-        'userid' => $_SESSION['userid'],
-        'fileid' => $_POST['deletefile']
-    ]);
-    header('location: ./');
-    exit();
+    trashfile($pdo);
 }
 
 ?>
@@ -46,7 +38,6 @@ if (isset($_POST['deletefile'])) {
         if (isset($_FILES["fileupload"]) && basename($_FILES["fileupload"]["name"][0]) !== '') {
             Uploadfiles($pdo);
         }
-
         echo (StorageLeft());
         ?>
 
@@ -56,9 +47,7 @@ if (isset($_POST['deletefile'])) {
     <form method="post">
         <div class="files">
             <?php
-
             SortData(GetData($pdo, 0));
-
             ?>
         </div>
     </form>

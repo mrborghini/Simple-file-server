@@ -6,28 +6,10 @@ require_once('components/functions.php');
 checkLogin();
 
 if (isset($_POST['deletefile'])) {
-    $querygetfile = "SELECT * FROM uploads WHERE trash = :trash AND userid = :userid AND fileid = :fileid";
-    $stmtgetfile = $pdo->prepare($querygetfile);
-    $stmtgetfile->execute([
-        'trash' => 1,
-        'userid' => $_SESSION['userid'],
-        'fileid' => $_POST['deletefile']
-    ]);
-    $filesindatabasegetfile = $stmtgetfile->fetch(PDO::FETCH_ASSOC);
-
-    $trashitemquery = "DELETE FROM uploads WHERE trash = :trash AND userid = :userid AND fileid = :fileid";
-    $stmttrash = $pdo->prepare($trashitemquery);
-    $stmttrash->execute([
-        'trash' => 1,
-        'userid' => $_SESSION['userid'],
-        'fileid' => $_POST['deletefile']
-    ]);
-    unlink('.' . $filesindatabasegetfile['filelocation']);
-    header('location: trash.php');
-    exit();
+    deletefiles($pdo);
 }
 
-if(isset($_POST['restore'])){
+if (isset($_POST['restore'])) {
     $trashitemquery = "UPDATE uploads SET trash = :trash WHERE userid = :userid AND fileid = :fileid";
     $stmttrash = $pdo->prepare($trashitemquery);
     $stmttrash->execute([
@@ -54,9 +36,9 @@ if(isset($_POST['restore'])){
 
 <body>
     <nav>
+        <?php echo (StorageLeft()); ?>
         <a class="navigation" href="logout.php">Logout</a>
         <a class="navigation" href="/">Home</a>
-        <?php echo (StorageLeft()); ?>
     </nav>
     <form method="post">
         <div class="files">
@@ -66,6 +48,7 @@ if(isset($_POST['restore'])){
 
             ?>
         </div>
+        <button name="deletefile" value="deleteall">Delete all forever items</button>
     </form>
 
 </body>

@@ -9,12 +9,17 @@ if (isset($_POST['deletefile'])) {
     trashfile($pdo);
 }
 
+if (isset($_FILES["fileupload"]) && basename($_FILES["fileupload"]["name"][0]) !== '') {
+    Uploadfiles($pdo);
+}
+
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+    <script src="/script/script.js" defer></script>
     <link rel="icon" href="images/SimpleFileServer.png">
     <link rel="stylesheet" href="style/style.css">
     <meta charset="UTF-8">
@@ -25,45 +30,26 @@ if (isset($_POST['deletefile'])) {
 
 <body>
     <form method="post" enctype="multipart/form-data">
-        <nav class="navbar">
-            <ul class="navcontent">
-                <li>
-                    <input type="file" onchange="submit()" id="uploadfile" class="uploadfile" name="fileupload[]" multiple>
-                    <label class="uploadfilelabel" for="uploadfile">
-                        <img class="blackicons" src="/images/upload.svg" alt="Upload files">
-                    </label>
-                </li>
-                <li>
-                    <input type="text" name="search" id="search" placeholder="Search">
-                </li>
+        <?php
+        
+        require_once('components/navbar.php');
+        
+        ?>
 
-                <?php
-
-                if (isset($_FILES["fileupload"]) && basename($_FILES["fileupload"]["name"][0]) !== '') {
-                    Uploadfiles($pdo);
-                }
-                ?>
-
-                <li>
-                    <a class="navigation" href="logout.php">Logout</a>
-                </li>
-                <li>
-                    <a class="navigation" href="trash.php">Trash</a>
-                </li>
-                <li>
-                    <?php echo StorageLeft(); ?>
-                </li>
-            </ul>
-        </nav>
     </form>
 
     <form method="post">
         <div class="files">
             <?php
-            if (!isset($_POST['search'])) {
+            if (isset($_POST['search'])) {
+                $_SESSION['search'] = $_POST['search'];
+                header('location: ./');
+                exit();
+            }
+            if (!isset($_SESSION['search'])) {
                 SortData(GetData($pdo, 0));
             } else {
-                SortData(SearchData($pdo, 0, $_POST['search']));
+                SortData(SearchData($pdo, 0, $_SESSION['search']));
             }
             ?>
         </div>

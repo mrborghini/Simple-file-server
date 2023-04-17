@@ -1,12 +1,13 @@
+* {
+    box-sizing: border-box;
+}
+
 body,
 html {
     margin: 0;
     padding: 0;
-    background-color: #272727;
+    background-color: #343a40;
     color: whitesmoke;
-    height: 100%;
-    width: 100%;
-    font-size: 1em;
 }
 
 .loginlayout {
@@ -77,32 +78,96 @@ html {
     filter: invert(1);
 }
 
-.navigation {
-    color: whitesmoke;
-}
-
-.uploadfile{
+.uploadfile {
     display: none;
 }
 
-.uploadfilelabel{
+.uploadfilelabel {
     display: flex;
-    height: 120px;
-    width: 120px;
+    width: 50px;
     background-color: #aa3723;
     border-radius: 10%;
+    margin: .5rem;
 }
 
-.navcontent{
+.navbar {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    list-style: none;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #007bff;
+    color: white;
+}
+
+.navbarlinks ul {
+    display: flex;
     margin: 0;
     padding: 0;
 }
 
-.navbuttons{
-    background-color: #aa3723;
-    padding: 20px;
+.navbarlinks li {
+    list-style: none;
+}
+
+.navbarlinks li a {
+    text-decoration: none;
+    color: white;
+    padding: 1rem;
+    display: block;
+}
+
+.navbarlinks li span {
+    text-decoration: none;
+    color: white;
+    padding: 1rem;
+    display: block;
+}
+
+.navbarlinks li:hover:not(.searchexception){
+    background-color: #6c757d;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    position: absolute;
+    right: 1rem;
+    top: 1.5rem;
+}
+
+.hamburger .hamburgerbar {
+    height: 3px;
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
+}
+
+@media (max-width: 600px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .navbarlinks {
+        display: none;
+        width: 100%;
+    }
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .navbar ul{
+        flex-direction: column;
+        width: 100%;
+    }
+    .navbarlinks li {
+        text-align: center;
+    }
+    .navbarlinks li a {
+        padding: .5rem 1rem;
+    }
+    .navbarlinks.active{
+        display: flex;
+    }
 }

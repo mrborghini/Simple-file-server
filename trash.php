@@ -27,6 +27,7 @@ if (isset($_POST['restore'])) {
 <html lang="en">
 
 <head>
+    <script src="/script/script.js" defer></script>
     <link rel="icon" href="images/SimpleFileServer.png">
     <link rel="stylesheet" href="style/style.css">
     <meta charset="UTF-8">
@@ -36,35 +37,27 @@ if (isset($_POST['restore'])) {
 </head>
 
 <body>
+    <?php
+
+    require_once('components/navbar.php');
+
+    ?>
+    </form>
     <form method="post">
-    <nav class="navbar">
-        <ul class="navcontent">
-            <li>
-                <input type="text" name="search" id="search" placeholder="Search">
-            </li>
-            <li>
-                <a class="navigation" href="logout.php">Logout</a>
-            </li>
-            <li>
-                    <a class="navigation" href="/">Home</a>
-                </li>
-                <li>
-                    <?php echo StorageLeft(); ?>
-                </li>
-            </ul>
-        </nav>
-        </form>
-        <form method="post">
         <div class="files">
             <?php
-            if (!isset($_POST['search'])) {
+            if (isset($_POST['search'])) {
+                $_SESSION['search'] = $_POST['search'];
+                header('location: trash.php');
+                exit();
+            }
+            if (!isset($_SESSION['search'])) {
                 SortData(GetData($pdo, 1));
             } else {
-                SortData(SearchData($pdo, 1, $_POST['search']));
+                SortData(SearchData($pdo, 1, $_SESSION['search']));
             }
             ?>
         </div>
-        <button id="Warn" onclick="return WarnUser()" name="ConfirmDelete" value="deleteall">Delete all forever items</button>
     </form>
 
     <script src="/script/script.js"></script>

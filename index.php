@@ -15,6 +15,7 @@ if (isset($_POST['deletefile'])) {
 <html lang="en">
 
 <head>
+    <link rel="icon" href="images/SimpleFileServer.png">
     <link rel="stylesheet" href="style/style.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -23,31 +24,47 @@ if (isset($_POST['deletefile'])) {
 </head>
 
 <body>
-    <nav>
-        <form method="post" enctype="multipart/form-data">
-            <input type="file" id="uploadfile" class="uploadfile" name="fileupload[]" multiple>
-            <label for="uploadfile">
-                Upload files
-            </label>
-            <input type="text" name="search" id="search" placeholder="Search">
-            <button type="submit">Confirm search or upload</button>
-        </form>
+    <form method="post" enctype="multipart/form-data">
+        <nav class="navbar">
+            <ul class="navcontent">
+                <li>
+                    <input type="file" onchange="submit()" id="uploadfile" class="uploadfile" name="fileupload[]" multiple>
+                    <label class="uploadfilelabel" for="uploadfile">
+                        <img class="blackicons" src="/images/upload.svg" alt="Upload files">
+                    </label>
+                </li>
+                <li>
+                    <input type="text" name="search" id="search" placeholder="Search">
+                </li>
 
-        <?php
+                <?php
 
-        if (isset($_FILES["fileupload"]) && basename($_FILES["fileupload"]["name"][0]) !== '') {
-            Uploadfiles($pdo);
-        }
-        echo (StorageLeft());
-        ?>
+                if (isset($_FILES["fileupload"]) && basename($_FILES["fileupload"]["name"][0]) !== '') {
+                    Uploadfiles($pdo);
+                }
+                ?>
 
-        <a class="navigation" href="logout.php">Logout</a>
-        <a class="navigation" href="trash.php">Trash</a>
-    </nav>
+                <li>
+                    <a class="navigation" href="logout.php">Logout</a>
+                </li>
+                <li>
+                    <a class="navigation" href="trash.php">Trash</a>
+                </li>
+                <li>
+                    <?php echo StorageLeft(); ?>
+                </li>
+            </ul>
+        </nav>
+    </form>
+
     <form method="post">
         <div class="files">
             <?php
-            SortData(GetData($pdo, 0));
+            if (!isset($_POST['search'])) {
+                SortData(GetData($pdo, 0));
+            } else {
+                SortData(SearchData($pdo, 0, $_POST['search']));
+            }
             ?>
         </div>
     </form>

@@ -27,6 +27,7 @@ if (isset($_POST['restore'])) {
 <html lang="en">
 
 <head>
+    <link rel="icon" href="images/SimpleFileServer.png">
     <link rel="stylesheet" href="style/style.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -35,22 +36,38 @@ if (isset($_POST['restore'])) {
 </head>
 
 <body>
-    <nav>
-        <?php echo (StorageLeft()); ?>
-        <a class="navigation" href="logout.php">Logout</a>
-        <a class="navigation" href="/">Home</a>
-    </nav>
     <form method="post">
+    <nav class="navbar">
+        <ul class="navcontent">
+            <li>
+                <input type="text" name="search" id="search" placeholder="Search">
+            </li>
+            <li>
+                <a class="navigation" href="logout.php">Logout</a>
+            </li>
+            <li>
+                    <a class="navigation" href="/">Home</a>
+                </li>
+                <li>
+                    <?php echo StorageLeft(); ?>
+                </li>
+            </ul>
+        </nav>
+        </form>
+        <form method="post">
         <div class="files">
             <?php
-
-            SortData(GetData($pdo, 1));
-
+            if (!isset($_POST['search'])) {
+                SortData(GetData($pdo, 1));
+            } else {
+                SortData(SearchData($pdo, 1, $_POST['search']));
+            }
             ?>
         </div>
-        <button name="deletefile" value="deleteall">Delete all forever items</button>
+        <button id="Warn" onclick="return WarnUser()" name="ConfirmDelete" value="deleteall">Delete all forever items</button>
     </form>
 
+    <script src="/script/script.js"></script>
 </body>
 
 </html>

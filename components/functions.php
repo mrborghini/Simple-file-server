@@ -143,7 +143,8 @@ function WinExecutables($exesrc, $exename, $exeid, $trash)
     }
 }
 
-function Uploadfiles($pdo){
+function Uploadfiles($pdo)
+{
     $targetdir = "uploads/";
     $fullpath = "/";
     $uploadquery = "INSERT INTO uploads (filename, filelocation, userid, trash) VALUES (:filename, :filelocation, :userid, :trash)";
@@ -178,7 +179,8 @@ function Uploadfiles($pdo){
     header("location: ./");
     exit();
 }
-function deletefiles($pdo){
+function deletefiles($pdo)
+{
     if ($_POST['deletefile'] !== "deleteall") {
         $querygetfile = "SELECT * FROM uploads WHERE trash = :trash AND userid = :userid AND fileid = :fileid";
         $stmtgetfile = $pdo->prepare($querygetfile);
@@ -221,7 +223,8 @@ function deletefiles($pdo){
     exit();
 }
 
-function trashfile($pdo){
+function trashfile($pdo)
+{
     $trashitemquery = "UPDATE uploads SET trash = :trash WHERE userid = :userid AND fileid = :fileid";
     $stmttrash = $pdo->prepare($trashitemquery);
     $stmttrash->execute([
@@ -231,6 +234,19 @@ function trashfile($pdo){
     ]);
     header('location: ./');
     exit();
+}
+
+function SearchData($pdo, $iftrash, $search)
+{
+    $query = "SELECT * FROM uploads WHERE userid = :userid AND trash = :trash AND filename LIKE :search";
+    $stmt = $pdo->prepare($query);
+    $stmt->execute([
+        'userid' => $_SESSION['userid'],
+        'trash' => $iftrash,
+        'search' => "%" . $search . "%"
+    ]);
+    $filesindatabase = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $filesindatabase;
 }
 
 ?>

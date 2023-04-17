@@ -11,6 +11,7 @@ checkNotLogin();
 <html lang="en">
 
 <head>
+    <link rel="icon" href="images/SimpleFileServer.png">
     <link rel="stylesheet" href="style/style.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,9 +20,10 @@ checkNotLogin();
 </head>
 
 <body>
-    <h1 class="pagetitle">Simple file server</h1>
     <form method="post" class="loginlayout">
-        <label for="email">email</label>
+        <img onclick="LoginFirst()" class="loginicon" src="/images/SimpleFileServer.png" alt="Login first">
+        <p></p>
+        <label for="email">Email</label>
         <input class="credentials" type="email" name="email" id="email">
         <p></p>
         <label for="password">Password</label>
@@ -51,6 +53,7 @@ checkNotLogin();
 
         ?>
     </form>
+    <script src="/script/script.js"></script>
 </body>
 
 </html>

@@ -17,9 +17,29 @@ html {
 }
 
 .credentials {
+    background-color: white;
+    color: black;
     max-width: 400px;
     width: 40%;
     padding: 20px;
+    outline: none;
+    border: solid;
+    border-color: gray;
+    text-align: center;
+    border-radius: 5%;
+    margin: 0;
+    font-size: 1em;
+    border-width: 5px;
+}
+
+.credentials:focus {
+    border-color: #aa3723;
+}
+
+.loginicon {
+    width: 50% !important;
+    max-width: 400px;
+    border-radius: 10%;
 }
 
 .pagetitle {
@@ -59,4 +79,30 @@ html {
 
 .navigation {
     color: whitesmoke;
+}
+
+.uploadfile{
+    display: none;
+}
+
+.uploadfilelabel{
+    display: flex;
+    height: 120px;
+    width: 120px;
+    background-color: #aa3723;
+    border-radius: 10%;
+}
+
+.navcontent{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbuttons{
+    background-color: #aa3723;
+    padding: 20px;
 }

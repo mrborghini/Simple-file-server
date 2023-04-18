@@ -2,7 +2,8 @@
 
 define('ImageExtensions', array('jpg', 'JPG', 'png', 'PNG', 'gif', 'GIF', 'jpeg', 'JPEG', 'svg', 'SVG', 'webp', 'WEBP'));
 define('VideoExtensions', array('mp4', 'webm', 'ogg'));
-define('Windows', array('msi', 'exe'));
+define('Windows', array('msi', 'MSI', 'exe', 'EXE'));
+define('Audio', array('MP3', 'mp3', 'WAV', 'wav', 'acc', 'ACC'));
 
 function checkLogin()
 {
@@ -63,6 +64,9 @@ function SortData($filesindatabase)
             case in_array($extension, Windows):
                 WinExecutables($filesrc, $filename, $fileid, $trash);
                 break;
+            case in_array($extension, Audio):
+                AudioFiles($filesrc, $filename, $fileid, $trash);
+                break;
             default:
                 break;
         }
@@ -74,6 +78,9 @@ function StorageLeft()
     $currentdiskfreebytes = disk_free_space('/');
 
     switch (true) {
+        case $currentdiskfreebytes > 1000000000000000:
+            $currentdiskfree = round($currentdiskfreebytes / 1000000000000000, 2) . 'PB';
+            break;
         case $currentdiskfreebytes > 1000000000000:
             $currentdiskfree = round($currentdiskfreebytes / 1000000000000, 2) . 'TB';
             break;
@@ -134,7 +141,7 @@ function WinExecutables($exesrc, $exename, $exeid, $trash)
     $safeexe = htmlspecialchars($exeid);
     echo ("<div class='filecard'>
             <span class='filename'>{$exename}</span>
-            <img class='blackicons' src='/images/exe.svg' alt='{$exename}'>
+            <img class='blackicons fileimg' src='/images/exe.svg' alt='{$exename}'>
             <a href='$exesrc'download='{$exename}'>Download file</a>
             ");
     if ($trash == 0) {
@@ -144,6 +151,24 @@ function WinExecutables($exesrc, $exename, $exeid, $trash)
         echo ("<button name='restore' value='{$safeexe}'>Restore item</button>
               <button name='deletefile' value='{$safeexe}'>Delete forever</button>
               </div>");
+    }
+}
+
+function AudioFiles($audiosrc, $audioname, $audioid, $trash){
+    $audioid = htmlspecialchars($audioid);
+    echo ("<div class='filecard'>
+            <span class='filename'>{$audioname}</span>
+            <img class='fileimg blackicons' src='/images/audio.svg' alt='Audio icon'>
+            <audio src='{$audiosrc}' alt='{$audioname}' controls></audio>
+            <a href='$audiosrc'download='{$audiosrc}'>Download file</a>
+        ");
+    if ($trash == 0) {
+        echo ("<button name='deletefile' value='{$audioid}'>Trash</button>
+               </div>");
+    } else {
+        echo ("<button name='restore' value='{$audioid}'>Restore item</button>
+               <button name='deletefile' value='{$audioid}'>Delete forever</button>
+               </div>");
     }
 }
 

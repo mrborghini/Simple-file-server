@@ -80,6 +80,40 @@ html {
     word-wrap: break-word;
 }
 
+.filecard button {
+    background-color: #6c757d;
+    border: none;
+    color: white;
+    padding: 1rem;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: .2rem;
+    user-select: none;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.filecard a {
+    background-color: #6c757d;
+    border: none;
+    color: white;
+    padding: 1rem;
+    text-decoration: none;
+    text-align: center;
+    margin-top: .2rem;
+    user-select: none;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.filecard a:hover, .filecard button:hover{
+    background-color: #535a5f;
+}
+
+.filecard a:active, .filecard button:active{
+    transform: translateY(5px);
+}
+
 .blackicons {
     width: 100%;
     user-select: none;
@@ -172,7 +206,7 @@ html {
     cursor: pointer;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1200px) {
     .hamburger {
         display: flex;
     }
@@ -213,38 +247,4 @@ html {
 
 #search:focus {
     border-color: #aa3723;
-}
-
-.filecard button {
-    background-color: #6c757d;
-    border: none;
-    color: white;
-    padding: 1rem;
-    cursor: pointer;
-    font-size: 1rem;
-    margin-top: .2rem;
-    user-select: none;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.filecard a {
-    background-color: #6c757d;
-    border: none;
-    color: white;
-    padding: 1rem;
-    text-decoration: none;
-    text-align: center;
-    margin-top: .2rem;
-    user-select: none;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.filecard a:hover, .filecard button:hover{
-    background-color: #535a5f;
-}
-
-.filecard a:active, .filecard button:active{
-    transform: translateY(5px);
 }

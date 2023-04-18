@@ -160,7 +160,7 @@ function AudioFiles($audiosrc, $audioname, $audioid, $trash){
             <span class='filename'>{$audioname}</span>
             <img class='fileimg blackicons' src='/images/audio.svg' alt='Audio icon'>
             <audio src='{$audiosrc}' alt='{$audioname}' controls></audio>
-            <a href='$audiosrc'download='{$audiosrc}'>Download file</a>
+            <a href='$audiosrc'download='{$audioname}'>Download file</a>
         ");
     if ($trash == 0) {
         echo ("<button name='deletefile' value='{$audioid}'>Trash</button>

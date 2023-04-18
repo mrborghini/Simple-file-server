@@ -114,6 +114,7 @@ html {
     color: white;
     font-size: 2.25rem;
     user-select: none;
+    box-sizing: border-box;
 }
 
 .navbarlinks ul {
@@ -141,7 +142,8 @@ html {
     text-decoration: none;
     color: white;
     padding: 2.5rem;
-    display: block;
+    display: flex;
+    justify-content: center;
 }
 
 .navbarlinks li:hover:not(.searchexception) {
@@ -170,7 +172,7 @@ html {
     cursor: pointer;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 1000px) {
     .hamburger {
         display: flex;
     }
@@ -223,7 +225,7 @@ html {
     margin-top: .2rem;
     user-select: none;
     width: 100%;
-    max-width: 400px;
+    box-sizing: border-box;
 }
 
 .filecard a {
@@ -236,7 +238,7 @@ html {
     margin-top: .2rem;
     user-select: none;
     width: 100%;
-    max-width: 368px;
+    box-sizing: border-box;
 }
 
 .filecard a:hover, .filecard button:hover{

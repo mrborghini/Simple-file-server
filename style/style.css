@@ -1,7 +1,3 @@
-* {
-    box-sizing: border-box;
-}
-
 body,
 html {
     margin: 0;
@@ -52,24 +48,36 @@ html {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    user-select: none;
+    gap: 20px;
+    white-space: normal;
 }
 
 .filecard {
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
-    max-width: 500px;
-    margin: 2%;
+    width: 100%;
+    max-width: 400px;
+    height: 400px;
 }
 
 .fileimg {
     width: 100%;
-    user-select: none;
+    height: 100%;
+    max-width: 400px;
+    max-height: 400px;
+    object-fit: cover;
 }
 
 .filename {
     text-align: center;
-    font-size: 30px;
+    font-size: 1rem;
+}
+
+.filecard span {
+    display: inline;
+    word-wrap: break-word;
 }
 
 .blackicons {
@@ -84,10 +92,18 @@ html {
 
 .uploadfilelabel {
     display: flex;
-    width: 50px;
+    width: 6rem;
     background-color: #aa3723;
     border-radius: 10%;
-    margin: .5rem;
+    margin: .225rem;
+}
+
+.uploadfilelabel:hover {
+    cursor: pointer;
+}
+
+.uploadfilelabel:active {
+    transform: translateY(5px);
 }
 
 .navbar {
@@ -96,6 +112,8 @@ html {
     align-items: center;
     background-color: #007bff;
     color: white;
+    font-size: 2.25rem;
+    user-select: none;
 }
 
 .navbarlinks ul {
@@ -108,21 +126,25 @@ html {
     list-style: none;
 }
 
+.navbarlinks li:hover {
+    cursor: pointer;
+}
+
 .navbarlinks li a {
     text-decoration: none;
     color: white;
-    padding: 1rem;
+    padding: 2.5rem;
     display: block;
 }
 
 .navbarlinks li span {
     text-decoration: none;
     color: white;
-    padding: 1rem;
+    padding: 2.5rem;
     display: block;
 }
 
-.navbarlinks li:hover:not(.searchexception){
+.navbarlinks li:hover:not(.searchexception) {
     background-color: #6c757d;
 }
 
@@ -134,7 +156,7 @@ html {
     height: 21px;
     position: absolute;
     right: 1rem;
-    top: 1.5rem;
+    top: 2.1rem;
 }
 
 .hamburger .hamburgerbar {
@@ -142,6 +164,10 @@ html {
     width: 100%;
     background-color: white;
     border-radius: 10px;
+}
+
+.hamburger:hover {
+    cursor: pointer;
 }
 
 @media (max-width: 600px) {
@@ -153,21 +179,70 @@ html {
         display: none;
         width: 100%;
     }
+
     .navbar {
         flex-direction: column;
         align-items: flex-start;
     }
-    .navbar ul{
+
+    .navbar ul {
         flex-direction: column;
         width: 100%;
     }
+
     .navbarlinks li {
         text-align: center;
     }
+
     .navbarlinks li a {
         padding: .5rem 1rem;
     }
-    .navbarlinks.active{
+
+    .navbarlinks.active {
         display: flex;
     }
+}
+
+#search {
+    width: 100%;
+    outline: none;
+    padding: 1rem;
+}
+
+#search:focus {
+    border-color: #aa3723;
+}
+
+.filecard button {
+    background-color: #6c757d;
+    border: none;
+    color: white;
+    padding: 1rem;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: .2rem;
+    user-select: none;
+    width: 100%;
+    max-width: 400px;
+}
+
+.filecard a {
+    background-color: #6c757d;
+    border: none;
+    color: white;
+    padding: 1rem;
+    text-decoration: none;
+    text-align: center;
+    margin-top: .2rem;
+    user-select: none;
+    width: 100%;
+    max-width: 368px;
+}
+
+.filecard a:hover, .filecard button:hover{
+    background-color: #535a5f;
+}
+
+.filecard a:active, .filecard button:active{
+    transform: translateY(5px);
 }

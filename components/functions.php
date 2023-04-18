@@ -95,18 +95,18 @@ function ShowImg($imgsrc, $imgname, $imgid, $trash)
 {
     $safeimgid = htmlspecialchars($imgid);
     echo ("<div class='filecard'>
-            <p class='filename'>{$imgname}</p>
+            <span class='filename'>{$imgname}</span>
             <img class='fileimg' src='{$imgsrc}' alt='{$imgname}'>
-            <a class='navigation' href='$imgsrc'download='{$imgname}'>Download file</a>
+            <a href='$imgsrc'download='{$imgname}'>Download file</a>
             ");
 
     if ($trash == 0) {
-        echo ("<button class='navigation' name='deletefile' value='{$safeimgid}'>Trash</button>
+        echo ("<button name='deletefile' value='{$safeimgid}'>Trash</button>
               </div>");
     } else {
-        echo ("<button class='navigation' name='restore' value='{$safeimgid}'>Restore item</button>
+        echo ("<button name='restore' value='{$safeimgid}'>Restore item</button>
 
-              <button class='navigation' name='deletefile' value='{$safeimgid}'>Delete forever</button>
+              <button name='deletefile' value='{$safeimgid}'>Delete forever</button>
               </div>");
     }
 }
@@ -115,16 +115,16 @@ function ShowVideo($videosrc, $videoname, $videoid, $trash)
 {
     $safevideoid = htmlspecialchars($videoid);
     echo ("<div class='filecard'>
-            <p class='filename'>{$videoname}</p>
+            <span class='filename'>{$videoname}</span>
             <video class='fileimg' src='{$videosrc}' alt='{$videoname}' controls></video>
-            <a class='navigation' href='$videosrc'download='{$videoname}'>Download file</a>
+            <a href='$videosrc'download='{$videoname}'>Download file</a>
         ");
     if ($trash == 0) {
-        echo ("<button class='navigation' name='deletefile' value='{$safevideoid}'>Trash</button>
+        echo ("<button name='deletefile' value='{$safevideoid}'>Trash</button>
                </div>");
     } else {
-        echo ("<button class='navigation' name='restore' value='{$safevideoid}'>Restore item</button>
-               <button class='navigation' name='deletefile' value='{$safevideoid}'>Delete forever</button>
+        echo ("<button name='restore' value='{$safevideoid}'>Restore item</button>
+               <button name='deletefile' value='{$safevideoid}'>Delete forever</button>
                </div>");
     }
 }
@@ -133,16 +133,16 @@ function WinExecutables($exesrc, $exename, $exeid, $trash)
 {
     $safeexe = htmlspecialchars($exeid);
     echo ("<div class='filecard'>
-            <p class='filename'>{$exename}</p>
+            <span class='filename'>{$exename}</span>
             <img class='blackicons' src='/images/exe.svg' alt='{$exename}'>
-            <a class='navigation' href='$exesrc'download='{$exename}'>Download file</a>
+            <a href='$exesrc'download='{$exename}'>Download file</a>
             ");
     if ($trash == 0) {
-        echo ("<button class='navigation' name='deletefile' value='{$safeexe}'>Trash</button>
+        echo ("<button name='deletefile' value='{$safeexe}'>Trash</button>
               </div>");
     } else {
-        echo ("<button class='navigation' name='restore' value='{$safeexe}'>Restore item</button>
-              <button class='navigation' name='deletefile' value='{$safeexe}'>Delete forever</button>
+        echo ("<button name='restore' value='{$safeexe}'>Restore item</button>
+              <button name='deletefile' value='{$safeexe}'>Delete forever</button>
               </div>");
     }
 }

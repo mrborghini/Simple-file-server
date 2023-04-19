@@ -42,7 +42,6 @@ if (isset($_POST['restore'])) {
     require_once('components/navbar.php');
 
     ?>
-    </form>
     <form method="post">
         <div class="files">
             <?php

@@ -16,7 +16,7 @@ html {
 .credentials {
     background-color: white;
     color: black;
-    max-width: 400px;
+    max-width: 500px;
     width: 40%;
     padding: 20px;
     outline: none;
@@ -27,6 +27,11 @@ html {
     margin: 0;
     font-size: 1em;
     border-width: 5px;
+    box-sizing: border-box;
+}
+
+button.credentials:hover{
+    cursor: pointer;
 }
 
 .credentials:focus {

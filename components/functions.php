@@ -1,7 +1,7 @@
 <?php
 
 define('ImageExtensions', array('jpg', 'JPG', 'png', 'PNG', 'gif', 'GIF', 'jpeg', 'JPEG', 'svg', 'SVG', 'webp', 'WEBP'));
-define('VideoExtensions', array('mp4', 'webm', 'ogg'));
+define('VideoExtensions', array('mp4', 'webm', 'ogg', 'mov', 'MOV'));
 define('Windows', array('msi', 'MSI', 'exe', 'EXE'));
 define('Audio', array('MP3', 'mp3', 'WAV', 'wav', 'acc', 'ACC'));
 

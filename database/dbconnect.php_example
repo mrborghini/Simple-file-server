@@ -1,17 +1,17 @@
 <?php
 
-session_start();
+session_start(); // Start session to store certain data
 
-$host = "YourDomainName"; //put here your domain name. For example: "localhost".
-$username = "YourUserName"; //Put your SQL username
-$password = "YourSQLPassword"; //Put your sql password here
-$dbname = "simple_file_server"; //Don't change this unless you're modifying the database name
-$dsn = "mysql:host=$host;dbname=$dbname"; //Don't change this
+$host = "YourDomainName"; // Put here your domain name. For example: "localhost".
+$username = "YourUserName"; // Put your SQL username
+$password = "YourSQLPassword"; // Put your sql password here
+$dbname = "simple_file_server"; // Don't change this unless you're modifying the database name
+$dsn = "mysql:host=$host;dbname=$dbname"; // Don't change this
 
 try {
-    $pdo = new PDO($dsn, $username, $password);
-} catch (PDOException $e) {
-    echo $e->getMessage();
+    $pdo = new PDO($dsn, $username, $password); // Try to connect to the sql database
+} catch (PDOException $e) { // If there is an error
+    echo $e->getMessage(); // print the error message
 }
 
 ?>

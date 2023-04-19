@@ -1,9 +1,9 @@
 <?php
 
-require_once('database/dbconnect.php');
-require_once('components/functions.php');
+require_once('database/dbconnect.php'); // Import dbconnect.php
+require_once('components/functions.php'); // Import functions.php
 
-checkNotLogin();
+checkNotLogin(); // Check if user is already logged into their account
 
 ?>
 
@@ -11,6 +11,7 @@ checkNotLogin();
 <html lang="en">
 
 <head>
+    <script src="/script/script.js" defer></script>
     <link rel="icon" href="images/SimpleFileServer.png">
     <link rel="stylesheet" href="style/style.css">
     <meta charset="UTF-8">
@@ -21,7 +22,7 @@ checkNotLogin();
 
 <body>
     <form method="post" class="loginlayout">
-        <img onclick="LoginFirst()" class="loginicon" src="/images/SimpleFileServer.png" alt="Login first">
+        <img onclick="LoginFirst()" class="loginicon" src="/images/SimpleFileServer.png" alt="Login first"> <!-- Call loginfirst function (Javascript) -->
         <p></p>
         <label for="email">Email</label>
         <input class="credentials" type="email" name="email" id="email">
@@ -32,28 +33,27 @@ checkNotLogin();
         <button class="credentials" type="submit">Confirm login</button>
         <?php
 
-        if (isset($_POST['email']) && $_POST['password']) {
-            $query = "SELECT * FROM users WHERE email = :email";
-            $stmt = $pdo->prepare($query);
-            $stmt->execute([
-                'email' => $_POST['email']
+        if (isset($_POST['email']) && $_POST['password']) { // Check if the input fields are set to login
+            $query = "SELECT * FROM users WHERE email = :email"; // Check if email exists in database
+            $stmt = $pdo->prepare($query); // Using prepared statements to prevent SQL injection attacks
+            $stmt->execute([ // execute the prepared statements
+                'email' => $_POST['email'] // Email from input field gets put in
             ]);
 
-            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            $result = $stmt->fetch(PDO::FETCH_ASSOC); // The user's account gets put into this variable
 
-            if ($result && password_verify($_POST['password'], $result['password'])) {
-                $_SESSION['userid'] = $result['userid'];
-                $_SESSION['email'] = $result['email'];
-                header('location: ./');
-                exit();
-            } else {
-                echo "Incorrect login";
+            if ($result && password_verify($_POST['password'], $result['password'])) { // If email exists and password input matches the encrypted password on the database
+                $_SESSION['userid'] = $result['userid']; // Put userid into session
+                $_SESSION['email'] = $result['email']; // put email into session
+                header('location: ./'); // redirect to root
+                exit(); // exit so the script stops for the user
+            } else { // If it does not match
+                echo "Incorrect login"; // Echo the message
             }
         }
 
         ?>
     </form>
-    <script src="/script/script.js"></script>
 </body>
 
 </html>

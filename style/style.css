@@ -30,7 +30,7 @@ html {
     box-sizing: border-box;
 }
 
-button.credentials:hover{
+button.credentials:hover {
     cursor: pointer;
 }
 
@@ -74,6 +74,7 @@ button.credentials:hover{
     max-height: 400px;
     object-fit: scale-down;
     aspect-ratio: 2;
+    user-select: none;
 }
 
 .filename {
@@ -260,4 +261,25 @@ button.credentials:hover{
 
 #search:focus {
     border-color: #aa3723;
+}
+
+.progressbox {
+    display: none;
+    width: 200px;
+    height: 50px;
+    color: #ffffff;
+    background-color: #aa3723;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    justify-content: center;
+    border-radius: 20px;
+    flex-direction: column;
+    align-items: center;
+    user-select: none;
+}
+
+.progressbox.active {
+    display: flex;
 }

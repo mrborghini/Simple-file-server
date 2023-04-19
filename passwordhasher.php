@@ -1,9 +1,9 @@
 <?php
 
-$unhashed = readline("String to encrypt: ");
+$unhashed = readline("String to encrypt: "); // String to encrypt
 
-$hashed = password_hash($unhashed, PASSWORD_DEFAULT);
+$hashed = password_hash($unhashed, PASSWORD_DEFAULT); // Encrypt the passsword
 
-echo $hashed;
+echo $hashed; // Print out the encrypted password
 
 ?>

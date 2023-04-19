@@ -1,17 +1,9 @@
 <?php
 
-require_once('database/dbconnect.php');
-require_once('components/functions.php');
+require_once('database/dbconnect.php'); // Import dbconnect.php
+require_once('components/functions.php'); // Import functions.php
 
-checkLogin();
-
-if (isset($_POST['deletefile'])) {
-    trashfile($pdo);
-}
-
-if (isset($_FILES["fileupload"]) && basename($_FILES["fileupload"]["name"][0]) !== '') {
-    Uploadfiles($pdo);
-}
+checkLogin(); // Check if user is logged in with the function
 
 ?>
 
@@ -29,18 +21,27 @@ if (isset($_FILES["fileupload"]) && basename($_FILES["fileupload"]["name"][0]) !
 </head>
 
 <body>
-    
-        <?php
-        
-        require_once('components/navbar.php');
-        
-        ?>
 
-    
+    <?php
+
+    require_once('components/navbar.php'); // Import navbar
+
+    ?>
+
+
 
     <form method="post">
         <div class="files">
             <?php
+
+            if (isset($_FILES["fileupload"]) && basename($_FILES["fileupload"]["name"][0]) !== '') {
+                Uploadfiles($pdo);
+            }
+
+            if (isset($_POST['deletefile'])) {
+                trashfile($pdo);
+            }
+
             if (isset($_POST['search'])) {
                 $_SESSION['search'] = $_POST['search'];
                 header('location: ./');

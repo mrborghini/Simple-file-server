@@ -104,7 +104,7 @@ function ShowImg($imgsrc, $imgname, $imgid, $trash)
     echo ("<div class='filecard'>
             <span class='filename'>{$imgname}</span>
             <img class='fileimg' src='{$imgsrc}' alt='{$imgname}'>
-            <a href='$imgsrc'download='{$imgname}'>Download file</a>
+            <a href='$imgsrc' download='{$imgname}'>Download file</a>
             ");
 
     if ($trash == 0) {
@@ -124,7 +124,7 @@ function ShowVideo($videosrc, $videoname, $videoid, $trash)
     echo ("<div class='filecard'>
             <span class='filename'>{$videoname}</span>
             <video class='fileimg' src='{$videosrc}' alt='{$videoname}' controls></video>
-            <a href='$videosrc'download='{$videoname}'>Download file</a>
+            <a href='$videosrc' download='{$videoname}'>Download file</a>
         ");
     if ($trash == 0) {
         echo ("<button name='deletefile' value='{$safevideoid}'>Trash</button>
@@ -142,7 +142,7 @@ function WinExecutables($exesrc, $exename, $exeid, $trash)
     echo ("<div class='filecard'>
             <span class='filename'>{$exename}</span>
             <img class='blackicons fileimg' src='/images/exe.svg' alt='{$exename}'>
-            <a href='$exesrc'download='{$exename}'>Download file</a>
+            <a href='$exesrc' download='{$exename}'>Download file</a>
             ");
     if ($trash == 0) {
         echo ("<button name='deletefile' value='{$safeexe}'>Trash</button>
@@ -160,7 +160,7 @@ function AudioFiles($audiosrc, $audioname, $audioid, $trash){
             <span class='filename'>{$audioname}</span>
             <img class='fileimg blackicons' src='/images/audio.svg' alt='Audio icon'>
             <audio src='{$audiosrc}' alt='{$audioname}' controls></audio>
-            <a href='$audiosrc'download='{$audioname}'>Download file</a>
+            <a href='$audiosrc' download='{$audioname}'>Download file</a>
         ");
     if ($trash == 0) {
         echo ("<button name='deletefile' value='{$audioid}'>Trash</button>

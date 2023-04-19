@@ -29,14 +29,14 @@ if (isset($_FILES["fileupload"]) && basename($_FILES["fileupload"]["name"][0]) !
 </head>
 
 <body>
-    <form method="post" enctype="multipart/form-data">
+    
         <?php
         
         require_once('components/navbar.php');
         
         ?>
 
-    </form>
+    
 
     <form method="post">
         <div class="files">

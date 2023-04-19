@@ -7,6 +7,7 @@ $url = $_SERVER['REQUEST_URI'];
 <nav class="navbar">
 
     <div class="navaction">
+    <form method="post" enctype="multipart/form-data">
         <?php
         if ($url !== "/trash.php") {
             echo '<input type="file" onchange="submit()" id="uploadfile" class="uploadfile" name="fileupload[]" multiple>
@@ -14,12 +15,11 @@ $url = $_SERVER['REQUEST_URI'];
             <img class="blackicons" src="/images/upload.svg" alt="Upload files">
         </label>';
         } else {
-            echo '<form method="post">
-            <button class="uploadfile" id="Warn" onclick="return WarnUser()" name="ConfirmDelete" value="deleteall"></button>
-            <label class="uploadfilelabel" for="Warn"><img src="/images/deleteall.svg" class="blackicons" alt="Delete all"></label>
-        </form>';
+            echo '<button class="uploadfile" id="Warn" onclick="return WarnUser()" name="ConfirmDelete" value="deleteall"></button>
+            <label class="uploadfilelabel" for="Warn"><img src="/images/deleteall.svg" class="blackicons" alt="Delete all"></label>';
         }
         ?>
+        </form>
     </div>
     <div class="navbarlinks">
         <ul>
@@ -30,6 +30,7 @@ $url = $_SERVER['REQUEST_URI'];
                                                                     echo $_SESSION['search'];
                                                                 } ?>" id="search" placeholder="Search and press enter">
                     </span>
+                </form>
             </li>
             <li>
                 <?php

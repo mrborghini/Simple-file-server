@@ -78,7 +78,7 @@ html {
 
 .filecard span {
     display: inline;
-    word-wrap: break-word;
+    word-break: break-all;
 }
 
 .filecard button {

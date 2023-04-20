@@ -318,3 +318,4 @@ function SearchData($pdo, $IsTrash, $search) // The variable must contain the co
     $filesindatabase = $stmt->fetchAll(PDO::FETCH_ASSOC); // Put all the results that match in this variable
     return $filesindatabase; // This is the final result
 }
+?>

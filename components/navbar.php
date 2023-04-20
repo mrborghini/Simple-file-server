@@ -2,6 +2,11 @@
 
 $url = $_SERVER['REQUEST_URI']; // Check current page
 
+if ($url == '/components/navbar.php') { // Check if current page is functions.php
+    header('location: ./'); // Redirect to index
+    exit(); // exit so the rest of page is not loaded
+}
+
 ?>
 
 <nav class="navbar">

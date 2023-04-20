@@ -5,6 +5,13 @@ These are all the functions that are being used for this webapp
 If you have any questions don't hesitate contacting me on my discord server: https://discord.gg/z48t39mW27.
 */
 
+$url = $_SERVER['REQUEST_URI'];
+
+if ($url == '/components/functions.php') { // Check if current page is functions.php
+    header('location: ./'); // Redirect to index
+    exit(); // exit so the rest of page is not loaded
+}
+
 define('ImageExtensions', array('jpg', 'JPG', 'png', 'PNG', 'gif', 'GIF', 'jpeg', 'JPEG', 'svg', 'SVG', 'webp', 'WEBP')); // Image formats
 define('VideoExtensions', array('mp4', 'webm', 'ogg', 'mov', 'MOV')); // video formats
 define('Windows', array('msi', 'MSI', 'exe', 'EXE')); // Windows executables formats

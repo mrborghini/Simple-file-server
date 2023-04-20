@@ -8,7 +8,7 @@ If you have any questions don't hesitate contacting me on my discord server: htt
 $url = $_SERVER['REQUEST_URI'];
 
 if ($url == '/components/functions.php') { // Check if current page is functions.php
-    header('location: ./'); // Redirect to index
+    header('location: ../'); // Redirect to index
     exit(); // exit so the rest of page is not loaded
 }
 

@@ -19,7 +19,6 @@ if (isset($_POST['restore'])) { // If any restore button is pressed
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="/fonts/Minecraft.ttf">
     <script src="/script/script.js" defer></script>
     <link rel="icon" href="images/SimpleFileServer.png">
     <link rel="stylesheet" href="style/style.css">

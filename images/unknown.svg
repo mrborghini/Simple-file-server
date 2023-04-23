@@ -25,8 +25,8 @@
      showgrid="false"
      units="px"
      inkscape:zoom="1.4142136"
-     inkscape:cx="262.69017"
-     inkscape:cy="237.58788"
+     inkscape:cx="262.69016"
+     inkscape:cy="237.58787"
      inkscape:window-width="1920"
      inkscape:window-height="1017"
      inkscape:window-x="-8"
@@ -228,13 +228,13 @@
     <text
        xml:space="preserve"
        style="font-size:97.8952px;line-height:1.25;font-family:sans-serif;stroke-width:3.05921"
-       x="54.06863"
-       y="78.315315"
+       x="41.533691"
+       y="78.876579"
        id="text2199"><tspan
          sodipodi:role="line"
          id="tspan2197"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:sans-serif;stroke-width:3.05921"
-         x="54.06863"
-         y="78.315315">?</tspan></text>
+         x="41.533691"
+         y="78.876579">?</tspan></text>
   </g>
 </svg>

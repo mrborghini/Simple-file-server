@@ -224,19 +224,19 @@
     <text
        xml:space="preserve"
        style="font-size:16.5493px;line-height:1.25;font-family:sans-serif;stroke-width:0.517162"
-       x="24.481379"
-       y="103.16576"
+       x="27.920963"
+       y="103.43034"
        id="text4478"><tspan
          sodipodi:role="line"
          id="tspan4476"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';stroke-width:0.517162"
-         x="24.481379"
-         y="103.16576">Simple File </tspan><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:sans-serif;stroke-width:0.517162"
+         x="27.920963"
+         y="103.43034">Simple File </tspan><tspan
          sodipodi:role="line"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';stroke-width:0.517162"
-         x="24.481379"
-         y="124.26793"
-         id="tspan3751">   server</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:sans-serif;stroke-width:0.517162"
+         x="27.920963"
+         y="124.11696"
+         id="tspan3751">    server</tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        d="m 68.853782,8.5226413 1.407033,0.025818"

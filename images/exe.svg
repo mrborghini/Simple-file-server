@@ -26,7 +26,7 @@
      units="px"
      inkscape:zoom="1"
      inkscape:cx="143.5"
-     inkscape:cy="251.99999"
+     inkscape:cy="252"
      inkscape:window-width="1920"
      inkscape:window-height="1017"
      inkscape:window-x="-8"
@@ -212,42 +212,42 @@
     <text
        xml:space="preserve"
        style="font-size:16.5493px;line-height:1.25;font-family:sans-serif;stroke-width:0.517162"
-       x="41.156303"
-       y="103.5954"
+       x="33.747971"
+       y="103.06623"
        id="text4478"><tspan
          sodipodi:role="line"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Minecraft;-inkscape-font-specification:Minecraft;stroke-width:0.517162"
-         x="41.156303"
-         y="103.5954"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';stroke-width:0.517162"
+         x="33.747971"
+         y="103.06623"
          id="tspan1930">Windows </tspan><tspan
          sodipodi:role="line"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Minecraft;-inkscape-font-specification:Minecraft;stroke-width:0.517162"
-         x="41.156303"
-         y="124.53233"
-         id="tspan3093">  exe</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';stroke-width:0.517162"
+         x="33.747971"
+         y="124.1684"
+         id="tspan3093">    exe</tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:4.90072px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="M 38.653863,11.980473 V 74.113535"
+       d="M 39.18303,11.980473 V 74.113535"
        id="path14427" />
     <path
        style="fill:none;stroke:#000000;stroke-width:4.90072px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="M 38.653863,74.113535 H 102.58515"
+       d="m 39.18303,74.113535 h 63.93129"
        id="path14429" />
     <path
        style="fill:none;stroke:#000000;stroke-width:4.90072px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="M 38.653863,11.980473 H 103.90337"
+       d="m 39.18303,11.980473 h 65.24951"
        id="path14431" />
     <path
        style="fill:none;stroke:#000000;stroke-width:4.90072px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 102.58515,74.113535 1.31822,-62.133062"
+       d="m 103.11432,74.113535 1.31822,-62.133062"
        id="path14433" />
     <path
        style="fill:none;stroke:#000000;stroke-width:4.90072px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 71.608134,12.19403 0.439434,61.919505"
+       d="m 72.137301,12.19403 0.439434,61.919505"
        id="path14435" />
     <path
        style="fill:none;stroke:#000000;stroke-width:4.90072px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="M 39.093273,43.367237 H 103.46395"
+       d="m 39.62244,43.367237 h 64.37068"
        id="path14437" />
   </g>
 </svg>

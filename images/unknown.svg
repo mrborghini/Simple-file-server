@@ -24,9 +24,9 @@
      inkscape:document-units="mm"
      showgrid="false"
      units="px"
-     inkscape:zoom="1"
-     inkscape:cx="265.49999"
-     inkscape:cy="170"
+     inkscape:zoom="0.70710678"
+     inkscape:cx="474.46865"
+     inkscape:cy="207.88939"
      inkscape:window-width="1920"
      inkscape:window-height="1017"
      inkscape:window-x="-8"
@@ -212,29 +212,29 @@
     <text
        xml:space="preserve"
        style="font-size:16.5493px;line-height:1.25;font-family:sans-serif;stroke-width:0.517162"
-       x="38.633362"
-       y="101.16325"
+       x="33.394878"
+       y="101.53743"
        id="text4478"><tspan
          sodipodi:role="line"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Minecraft;-inkscape-font-specification:Minecraft;stroke-width:0.517162"
-         x="38.633362"
-         y="101.16325"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';stroke-width:0.517162"
+         x="33.394878"
+         y="101.53743"
          id="tspan1930">Unknown</tspan><tspan
          sodipodi:role="line"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Minecraft;-inkscape-font-specification:Minecraft;stroke-width:0.517162"
-         x="38.633362"
-         y="122.10017"
-         id="tspan14973">filetype</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';stroke-width:0.517162"
+         x="33.394878"
+         y="122.6396"
+         id="tspan14973"> filetype</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:97.8952px;line-height:1.25;font-family:sans-serif;stroke-width:3.05921"
-       x="47.520527"
-       y="76.257339"
+       x="46.585083"
+       y="76.631516"
        id="text2199"><tspan
          sodipodi:role="line"
          id="tspan2197"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Minecraft;-inkscape-font-specification:Minecraft;stroke-width:3.05921"
-         x="47.520527"
-         y="76.257339">?</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';stroke-width:3.05921"
+         x="46.585083"
+         y="76.631516">?</tspan></text>
   </g>
 </svg>

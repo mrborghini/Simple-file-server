@@ -25,8 +25,8 @@
      showgrid="false"
      units="px"
      inkscape:zoom="1"
-     inkscape:cx="176.5"
-     inkscape:cy="311"
+     inkscape:cx="225.5"
+     inkscape:cy="275"
      inkscape:window-width="1920"
      inkscape:window-height="1017"
      inkscape:window-x="-8"
@@ -211,47 +211,47 @@
        id="path915" />
     <path
        style="fill:none;stroke:#000000;stroke-width:2.06702px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="M 66.889821,7.1967304 V 80.254514"
+       d="M 69.667946,8.6519387 V 81.709722"
        id="path1030" />
     <path
        style="fill:none;stroke:#000000;stroke-width:2.06702px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="M 66.889821,7.1967304 36.183389,37.604022"
+       d="M 69.667946,8.6519387 38.961514,39.05923"
        id="path1426" />
     <path
        style="fill:none;stroke:#000000;stroke-width:2.06702px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="M 66.901514,7.2171932 97.986545,37.999399"
+       d="M 69.679639,8.6724015 100.76467,39.454607"
        id="path1949" />
     <text
        xml:space="preserve"
        style="font-size:16.5493px;line-height:1.25;font-family:sans-serif;stroke-width:0.517162"
-       x="27.127213"
-       y="102.6366"
+       x="24.481379"
+       y="103.16576"
        id="text4478"><tspan
          sodipodi:role="line"
          id="tspan4476"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Minecraft;-inkscape-font-specification:Minecraft;stroke-width:0.517162"
-         x="27.127213"
-         y="102.6366">Simple File </tspan><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';stroke-width:0.517162"
+         x="24.481379"
+         y="103.16576">Simple File </tspan><tspan
          sodipodi:role="line"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Minecraft;-inkscape-font-specification:Minecraft;stroke-width:0.517162"
-         x="27.127213"
-         y="123.57353"
-         id="tspan3751">  server</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';stroke-width:0.517162"
+         x="24.481379"
+         y="124.26793"
+         id="tspan3751">   server</tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="M 66.075657,7.067433 67.48269,7.093251"
+       d="m 68.853782,8.5226413 1.407033,0.025818"
        id="path5839" />
     <path
        style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 66.169245,6.8479873 1.407033,0.025818"
+       d="m 68.94737,8.3031956 1.407033,0.025818"
        id="path5839-8" />
     <path
        style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 66.162791,6.7059932 1.407033,0.025818"
+       d="m 68.940916,8.1612015 1.407033,0.025818"
        id="path5839-8-4" />
     <path
        style="fill:none;stroke:#000000;stroke-width:0.259514px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 66.159111,6.584501 1.467545,0.023814"
+       d="m 68.937236,8.0397093 1.467545,0.023814"
        id="path5839-8-3" />
   </g>
 </svg>

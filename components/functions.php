@@ -16,6 +16,7 @@ define('ImageExtensions', array('jpg', 'JPG', 'png', 'PNG', 'gif', 'GIF', 'jpeg'
 define('VideoExtensions', array('mp4', 'webm', 'ogg', 'mov', 'MOV')); // video formats
 define('Windows', array('msi', 'MSI', 'exe', 'EXE')); // Windows executables formats
 define('Audio', array('MP3', 'mp3', 'WAV', 'wav', 'acc', 'ACC')); // Audio formats
+define('Archive', array('7Z', 'ACE', 'ALZ', 'APK', 'ARC', 'ARJ', 'B1', 'BA', 'BH', 'CAB', 'CAR', 'CFS', 'CPT', 'DAR', 'DD', 'DGC', 'DMG', 'EAR', 'GCA', 'GZ', 'HA', 'HKI', 'ICE', 'JAR', 'KGB', 'LBR', 'LQR', 'LZH', 'LZMA', 'LZO', 'MZP', 'NCO', 'PAK', 'PARTIMG', 'PAQ6', 'PAQ7', 'PAQ8', 'PEA', 'PIM', 'PIT', 'QDA', 'RAR', 'RK', 'RPM', 'SDA', 'SEA', 'SEN', 'SFARK', 'SFX', 'SHK', 'SIT', 'SITX', 'SQX', 'TAR', 'TBZ', 'TGZ', 'TLZ', 'UC', 'UC0', 'UC2', 'UCA', 'UHA', 'WAR', 'WIM', 'XAR', 'XP3', 'YZ1', 'ZIP', 'ZIPX', 'ZOO', '7z', 'ace', 'alz', 'apk', 'arc', 'arj', 'b1', 'ba', 'bh', 'cab', 'car', 'cfs', 'cpt', 'dar', 'dd', 'dgc', 'dmg', 'ear', 'gca', 'gz', 'ha', 'hki', 'ice', 'jar', 'kgb', 'lbr', 'lqr', 'lzh', 'lzma', 'lzo', 'mzp', 'nco', 'pak', 'partimg', 'paq6', 'paq7', 'paq8', 'pea', 'pim', 'pit', 'qda', 'rar', 'rk', 'rpm', 'sda', 'sea', 'sen', 'sfark', 'sfx', 'shk', 'sit', 'sitx', 'sqx', 'tar', 'tbz', 'tgz', 'tlz', 'uc', 'uc0', 'uc2', 'uca', 'uha', 'war', 'wim', 'xar', 'xp3', 'yz1', 'zip', 'zipx', 'zoo')); // Archive extensions
 
 
 // Check if user is not logged. If user is not logged in redirect to login.php
@@ -85,6 +86,9 @@ function SortData($filesindatabase) // That's convenient! We already have that b
                 break;
             case in_array($extension, Audio): // If everything after the last period is an audio format
                 AudioFiles($filesrc, $filename, $fileid, $trash); // Then call the audio files function with all the required data
+                break;
+            case in_array($extension, Archive): // If everything after the last period is an archive format
+                archive($filesrc, $filename, $fileid, $trash); // Then call the audio files function with all the required data
                 break;
             default: // If the filetype cannot be determined
                 unknownfiletype($filesrc, $filename, $fileid, $trash); // Then call the unknown filetype function with all the required data
@@ -191,6 +195,24 @@ function AudioFiles($audiosrc, $audioname, $audioid, $trash) // Get the required
         echo ("<button name='restore' value='{$audioid}'>Restore item</button>
                <button name='deletefile' value='{$audioid}'>Delete forever</button>
                </div>"); // 2 buttons will get printed and 1 of them is to restore them from the trash and the other one to delete it forever
+    }
+}
+
+// Archive files
+function archive($filesrc, $filename, $fileid, $trash) // Get the required data for the function and if it's trash
+{
+    $safefileid = htmlspecialchars($fileid); // Turn the id into text
+    echo ("<div class='filecard'>
+            <span class='filename'>{$filename}</span>
+            <img class='blackicons fileimg' src='/images/archive.svg' alt='{$filename}'>
+            <a href='$filesrc' download='{$filename}'>Download file</a>"); // Print out all the html
+    if ($trash == 0) { // Check if the given trash variable is trash. If trash is false(0) then it will print a button with trash
+        echo ("<button name='deletefile' value='{$safefileid}'>Trash</button>
+              </div>"); // 1 Trash button gets printed
+    } else {
+        echo ("<button name='restore' value='{$safefileid}'>Restore item</button>
+              <button name='deletefile' value='{$safefileid}'>Delete forever</button>
+              </div>"); // 2 buttons will get printed and 1 of them is to restore them from the trash and the other one to delete it forever
     }
 }
 
@@ -325,4 +347,3 @@ function SearchData($pdo, $IsTrash, $search) // The variable must contain the co
     $filesindatabase = $stmt->fetchAll(PDO::FETCH_ASSOC); // Put all the results that match in this variable
     return $filesindatabase; // This is the final result
 }
-?>

@@ -12,11 +12,11 @@ if ($url == '/components/functions.php') { // Check if current page is functions
     exit(); // exit so the rest of page is not loaded
 }
 
-define('ImageExtensions', array('jpg', 'JPG', 'png', 'PNG', 'gif', 'GIF', 'jpeg', 'JPEG', 'svg', 'SVG', 'webp', 'WEBP')); // Image formats
-define('VideoExtensions', array('mp4', 'webm', 'ogg', 'mov', 'MOV')); // video formats
-define('Windows', array('msi', 'MSI', 'exe', 'EXE')); // Windows executables formats
-define('Audio', array('MP3', 'mp3', 'WAV', 'wav', 'acc', 'ACC')); // Audio formats
-define('Archive', array('7Z', 'ACE', 'ALZ', 'APK', 'ARC', 'ARJ', 'B1', 'BA', 'BH', 'CAB', 'CAR', 'CFS', 'CPT', 'DAR', 'DD', 'DGC', 'DMG', 'EAR', 'GCA', 'GZ', 'HA', 'HKI', 'ICE', 'JAR', 'KGB', 'LBR', 'LQR', 'LZH', 'LZMA', 'LZO', 'MZP', 'NCO', 'PAK', 'PARTIMG', 'PAQ6', 'PAQ7', 'PAQ8', 'PEA', 'PIM', 'PIT', 'QDA', 'RAR', 'RK', 'RPM', 'SDA', 'SEA', 'SEN', 'SFARK', 'SFX', 'SHK', 'SIT', 'SITX', 'SQX', 'TAR', 'TBZ', 'TGZ', 'TLZ', 'UC', 'UC0', 'UC2', 'UCA', 'UHA', 'WAR', 'WIM', 'XAR', 'XP3', 'YZ1', 'ZIP', 'ZIPX', 'ZOO', '7z', 'ace', 'alz', 'apk', 'arc', 'arj', 'b1', 'ba', 'bh', 'cab', 'car', 'cfs', 'cpt', 'dar', 'dd', 'dgc', 'dmg', 'ear', 'gca', 'gz', 'ha', 'hki', 'ice', 'jar', 'kgb', 'lbr', 'lqr', 'lzh', 'lzma', 'lzo', 'mzp', 'nco', 'pak', 'partimg', 'paq6', 'paq7', 'paq8', 'pea', 'pim', 'pit', 'qda', 'rar', 'rk', 'rpm', 'sda', 'sea', 'sen', 'sfark', 'sfx', 'shk', 'sit', 'sitx', 'sqx', 'tar', 'tbz', 'tgz', 'tlz', 'uc', 'uc0', 'uc2', 'uca', 'uha', 'war', 'wim', 'xar', 'xp3', 'yz1', 'zip', 'zipx', 'zoo')); // Archive extensions
+define('ImageExtensions', array('jpg', 'png', 'gif', 'jpeg', 'svg', 'webp')); // Image formats
+define('VideoExtensions', array('mp4', 'webm', 'ogg', 'mov')); // video formats
+define('Windows', array('msi', 'exe')); // Windows executables formats
+define('Audio', array('mp3', 'wav', 'acc')); // Audio formats
+define('Archive', array('7z', 'ace', 'alz', 'apk', 'arc', 'arj', 'b1', 'ba', 'bh', 'cab', 'car', 'cfs', 'cpt', 'dar', 'dd', 'dgc', 'dmg', 'ear', 'gca', 'gz', 'ha', 'hki', 'ice', 'jar', 'kgb', 'lbr', 'lqr', 'lzh', 'lzma', 'lzo', 'mzp', 'nco', 'pak', 'partimg', 'paq6', 'paq7', 'paq8', 'pea', 'pim', 'pit', 'qda', 'rar', 'rk', 'rpm', 'sda', 'sea', 'sen', 'sfark', 'sfx', 'shk', 'sit', 'sitx', 'sqx', 'tar', 'tbz', 'tgz', 'tlz', 'uc', 'uc0', 'uc2', 'uca', 'uha', 'war', 'wim', 'xar', 'xp3', 'yz1', 'zip', 'zipx', 'zoo')); // Archive extensions
 
 
 // Check if user is not logged. If user is not logged in redirect to login.php
@@ -73,7 +73,8 @@ function SortData($filesindatabase) // That's convenient! We already have that b
         $trash =  $filesindatabase[$i]['trash'];
 
         $fileseperation = explode('.', $filename); // Seperate the file based on where the periods are
-        $extension = end($fileseperation); // Get everything after the last period
+        $extension = strtolower(end($fileseperation)); // Get everything after the last period and make it lower case
+
         switch ($extension) { // Remember this switch statement in the for loop so it will get all the files one at the time and it will check if the extensions can be determined.
             case in_array($extension, ImageExtensions): // If everything after the last period is an image format
                 ShowImg($filesrc, $filename, $fileid, $trash); // Then call the image files function with all the required data

@@ -5,7 +5,8 @@ USE simple_file_server; -- Making sure it's running the rest of the script in th
 CREATE TABLE users ( -- Create table named users --
     userid int NOT NULL AUTO_INCREMENT PRIMARY KEY, -- Making user id's automatically -- 
     email varchar(50) NOT NULL, -- email with max characters of 50 --
-    password varchar(255) NOT NULL -- Password with max characters of 50 --
+    password varchar(255) NOT NULL, -- Password with max characters of 50 --
+    theme int NULL -- Themes with number of style --
 );
 
 CREATE TABLE uploads ( -- Create table named uploads --

@@ -5,6 +5,7 @@ html {
     background-color: #343a40;
     color: whitesmoke;
     font-family: sans-serif;
+    box-sizing: border-box;
 }
 
 .loginlayout {
@@ -88,7 +89,7 @@ button.credentials:hover {
     word-break: break-all;
 }
 
-.filecard button {
+.filecard button, .filecard a {
     background-color: #6c757d;
     border: none;
     color: white;
@@ -99,19 +100,9 @@ button.credentials:hover {
     user-select: none;
     width: 100%;
     box-sizing: border-box;
-}
-
-.filecard a {
-    background-color: #6c757d;
-    border: none;
-    color: white;
-    padding: 1rem;
-    text-decoration: none;
     text-align: center;
-    margin-top: .2rem;
-    user-select: none;
-    width: 100%;
-    box-sizing: border-box;
+    border-radius: 20px;
+    text-decoration: none;
 }
 
 .filecard video {
@@ -173,6 +164,9 @@ button.credentials:hover {
 }
 
 .navbarlinks li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     list-style: none;
 }
 
@@ -180,23 +174,24 @@ button.credentials:hover {
     cursor: pointer;
 }
 
-.navbarlinks li a {
-    text-decoration: none;
-    color: white;
-    padding: 2.5rem;
-    display: block;
-}
-
+.navbarlinks li a,
 .navbarlinks li span {
     text-decoration: none;
     color: white;
     padding: 2.5rem;
     display: flex;
+    align-items: center;
     justify-content: center;
+    margin: 0;
 }
 
 .navbarlinks li:hover:not(.searchexception) {
-    background-color: #6c757d;
+    color: #b7bdc4;
+}
+
+.navbarlinks li a:hover,
+.navbarlinks li span:hover {
+    color: #b7bdc4;
 }
 
 .hamburger {
@@ -249,6 +244,10 @@ button.credentials:hover {
         padding: .5rem 1rem;
     }
 
+    .navbarlinks li span {
+        padding: .5rem 1rem;
+    }
+
     .navbarlinks.active {
         display: flex;
     }
@@ -264,23 +263,24 @@ button.credentials:hover {
     border-color: #aa3723;
 }
 
-.progressbox {
-    display: none;
-    width: 200px;
-    height: 50px;
-    color: #ffffff;
-    background-color: #aa3723;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.themes {
+    display: flex;
     justify-content: center;
-    border-radius: 20px;
-    flex-direction: column;
     align-items: center;
-    user-select: none;
+    flex-direction: column;
+    flex-wrap: wrap;
 }
 
-.progressbox.active {
-    display: flex;
+.themes span:nth-child(2) {
+    font-size: 2rem;
+}
+
+.themeselector {
+    padding: 0.5rem;
+    font-size: 2rem;
+    background-color: #007bff;
+    border: 0;
+    color: white;
+    border-radius: 20px;
+    text-align: center;
 }

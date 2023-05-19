@@ -1,0 +1,17 @@
+html,
+body {
+    background-color: #e4e4e4;
+    color: black;
+}
+
+.filecard button, .filecard a {
+    color: black;
+    background-color: #a8a8a8;
+}
+.filecard button:hover, .filecard a:hover {
+    background-color: #949494;
+}
+
+.filecard .blackicons{
+    filter: invert(0);
+}

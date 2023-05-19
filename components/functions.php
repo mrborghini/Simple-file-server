@@ -17,7 +17,7 @@ define('VideoExtensions', array('mp4', 'webm', 'ogg', 'mov')); // video formats
 define('Windows', array('msi', 'exe')); // Windows executables formats
 define('Audio', array('mp3', 'wav', 'acc')); // Audio formats
 define('Archive', array('7z', 'ace', 'alz', 'apk', 'arc', 'arj', 'b1', 'ba', 'bh', 'cab', 'car', 'cfs', 'cpt', 'dar', 'dd', 'dgc', 'dmg', 'ear', 'gca', 'gz', 'ha', 'hki', 'ice', 'jar', 'kgb', 'lbr', 'lqr', 'lzh', 'lzma', 'lzo', 'mzp', 'nco', 'pak', 'partimg', 'paq6', 'paq7', 'paq8', 'pea', 'pim', 'pit', 'qda', 'rar', 'rk', 'rpm', 'sda', 'sea', 'sen', 'sfark', 'sfx', 'shk', 'sit', 'sitx', 'sqx', 'tar', 'tbz', 'tgz', 'tlz', 'uc', 'uc0', 'uc2', 'uca', 'uha', 'war', 'wim', 'xar', 'xp3', 'yz1', 'zip', 'zipx', 'zoo')); // Archive extensions
-
+define('Themes', array('/style/stylelight.css', '/style/stylepink.css', '/style/stylered.css', '/style/stylexdark.css', '/style/stylepurple.css', '/style/stylelambo.css'));
 
 // Check if user is not logged. If user is not logged in redirect to login.php
 function checkLogin()
@@ -348,3 +348,53 @@ function SearchData($pdo, $IsTrash, $search) // The variable must contain the co
     $filesindatabase = $stmt->fetchAll(PDO::FETCH_ASSOC); // Put all the results that match in this variable
     return $filesindatabase; // This is the final result
 }
+
+// Change user theme
+function changetheme($pdo, $themeselector){ // The variable must contain the connection of mysql via PDO and the variable where the theme is going to end up
+    $query = "UPDATE users SET theme = :theme"; // Change the theme in the database
+    $stmt = $pdo->prepare($query); // Using prepared statements to prevent SQL injection attacks
+    $stmt->execute([ // execute the prepared statements
+        'theme' => $themeselector
+    ]);
+    header('location: settings.php'); // Refresh the page / redirect to the same page so you cannot upload the same files by refreshing
+    exit(); // Exit so the script stops for the user
+}
+
+function GetCurrentTheme($pdo){
+    $query = "SELECT * FROM users WHERE userid = :userid"; // Change the theme in the database
+    $stmt = $pdo->prepare($query); // Using prepared statements to prevent SQL injection attacks
+    $stmt->execute([
+        'userid' => $_SESSION['userid']
+    ]);
+    $theme = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $theme['theme'];
+}
+
+function ApplyCurrentTheme($theme) {
+    switch($theme){
+        case 1:
+            $result = Themes[0];
+            break;
+        case 2:
+            $result = Themes[1];
+            break;
+        case 3:
+            $result = Themes[2];
+            break;
+        case 4:
+            $result = Themes[3];
+            break;
+        case 5:
+            $result = Themes[4];
+            break;
+        case 6:
+            $result = Themes[5];
+            break;
+        default:
+            $result = null;
+            break;
+    }
+    return "<link rel='stylesheet' href='{$result}'";
+}
+
+?>

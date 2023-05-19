@@ -14,14 +14,21 @@ if ($url == '/components/navbar.php') { // Check if current page is functions.ph
     <div class="navaction">
         <form method="post" enctype="multipart/form-data">
             <?php
-            if ($url !== "/trash.php") { // If current page is not trash then it can upload files
-                echo '<input type="file" onchange="submit()" id="uploadfile" class="uploadfile" name="fileupload[]" multiple>
-        <label class="uploadfilelabel" for="uploadfile">
-            <img class="blackicons" src="/images/upload.svg" alt="Upload files">
-        </label>';
-            } else { // If the current page is trash then it can delete all files
-                echo '<button class="uploadfile" id="Warn" onclick="return WarnUser()" name="ConfirmDelete" value="deleteall"></button>
-            <label class="uploadfilelabel" for="Warn"><img src="/images/deleteall.svg" class="blackicons" alt="Delete all"></label>';
+            switch ($url) {
+                case "/trash.php":
+                    echo '<button class="uploadfile" id="Warn" onclick="return WarnUser()" name="ConfirmDelete" value="deleteall"></button>
+                          <label class="uploadfilelabel" for="Warn"><img src="/images/deleteall.svg" class="blackicons" alt="Delete all"></label>';
+                    break;
+                case "/settings.php":
+                    echo '<button class="uploadfile"></button>
+                          <label class="uploadfilelabel" for="Warn"><img src="/images/example.svg" class="blackicons" alt="Example"></label>';
+                    break;
+                default:
+                    echo '<input type="file" onchange="submit()" id="uploadfile" class="uploadfile" name="fileupload[]" multiple>
+                          <label class="uploadfilelabel" for="uploadfile">
+                          <img class="blackicons" src="/images/upload.svg" alt="Upload files">
+                          </label>';
+                    break;
             }
             ?>
         </form>
@@ -30,29 +37,32 @@ if ($url == '/components/navbar.php') { // Check if current page is functions.ph
         <ul>
             <li class="searchexception">
                 <form method="post">
-                    <span>
-                        <input type="text" name="search" value="<?php
-                                                                if (isset($_SESSION['search'])) { // prints the search from a session variable if it's not empty
-                                                                    echo $_SESSION['search'];
-                                                                }
-                                                                ?>" id="search" placeholder="Search and press enter">
+                    <span class="searchexception">
+                        <input type="text" name="search" value="<?php if (isset($_SESSION['search'])) echo $_SESSION['search']; ?>" id="search" placeholder="Search and press enter"> <!-- prints the search from a session variable if it's not empty -->
                     </span>
                 </form>
             </li>
+            <?php
+            if ($url !== "/") {
+                echo '<li>
+                <a href="/">Home</a>
+            </li>';
+            } else {
+                echo '
             <li>
-                <?php
-                if ($url !== "/trash.php") { // If page is not trash
-                    echo '<a href="trash.php">Trash</a>'; // Hyperlink to trash
-                } else {
-                    echo '<a href="/">Home</a>'; // Hyperlink to home
-                }
-                ?>
-            </li>
+                <a href="trash.php">Trash</a>
+            </li>';
+            }
+
+            ?>
             <li onclick="storage()"> <!-- Call storage function (Javascript) -->
                 <span><?php echo StorageLeft(); ?></span>
             </li>
             <li>
                 <a href="logout.php">Logout</a>
+            </li>
+            <li>
+                <a href="settings.php">⚙</a>
             </li>
         </ul>
     </div>

@@ -1,0 +1,25 @@
+html,
+body {
+    background-color: #c25858;
+    color: white;
+}
+
+.navbar, .themeselector {
+    background-color: #c42020;
+}
+
+.filecard button, .filecard a {
+    color: white;
+    background-color: #ee6c6c;
+}
+.filecard button:hover, .filecard a:hover {
+    background-color: #db7d7d;
+}
+
+.filecard .blackicons{
+    filter: invert(1);
+}
+
+.uploadfilelabel {
+    background-color: #e05656;
+}

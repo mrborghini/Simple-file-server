@@ -394,7 +394,7 @@ function ApplyCurrentTheme($theme) {
             $result = null;
             break;
     }
-    return "<link rel='stylesheet' href='{$result}'";
+    return "<link rel='stylesheet' href='{$result}'>";
 }
 
 ?>
